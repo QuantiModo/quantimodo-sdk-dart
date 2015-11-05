@@ -142,7 +142,7 @@ class MeasurementApi {
   
   /// Get Measurements CSV
   ///
-  /// Get Measurements CSV
+  /// Download a CSV containing all user measurements
   Future<MultipartFile> measurementsCsvGet() {
     Object postBody = null;
     
@@ -188,7 +188,7 @@ class MeasurementApi {
   
   /// Post Request for Measurements CSV
   ///
-  /// Post Request for Measurements CSV
+  /// Use this endpoint to schedule a CSV export containing all user measurements to be emailed to the user within 24 hours.
   Future<int> measurementsRequestCsvPost() {
     Object postBody = null;
     
