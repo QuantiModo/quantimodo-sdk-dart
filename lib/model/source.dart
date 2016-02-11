@@ -12,10 +12,10 @@ class Source {
   /* Name of the application or device */
   String name = null;
   
-  /* created_at */
+  /* When the record was first created. Use ISO 8601 datetime format */
   DateTime createdAt = null;
   
-  /* updated_at */
+  /* When the record in the database was last updated. Use ISO 8601 datetime format */
   DateTime updatedAt = null;
   
   

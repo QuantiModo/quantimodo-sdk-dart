@@ -3,19 +3,22 @@ part of api;
 
 @Entity()
 class Credential {
-  /* connector_id */
+  /* ID of user that owns this credential */
+  int userId = null;
+  
+  /* The id for the connector data source from which the credential was obtained */
   int connectorId = null;
   
-  /* attr_key */
+  /* Attribute name such as token, userid, username, or password */
   String attrKey = null;
   
-  /* attr_value */
+  /* Encrypted value for the attribute specified */
   String attrValue = null;
   
-  /* created_at */
+  /* When the record was first created. Use ISO 8601 datetime format */
   DateTime createdAt = null;
   
-  /* updated_at */
+  /* When the record in the database was last updated. Use ISO 8601 datetime format */
   DateTime updatedAt = null;
   
   
@@ -23,7 +26,7 @@ class Credential {
 
   @override
   String toString()  {
-    return 'Credential[connectorId=$connectorId, attrKey=$attrKey, attrValue=$attrValue, createdAt=$createdAt, updatedAt=$updatedAt, ]';
+    return 'Credential[userId=$userId, connectorId=$connectorId, attrKey=$attrKey, attrValue=$attrValue, createdAt=$createdAt, updatedAt=$updatedAt, ]';
   }
 
 }

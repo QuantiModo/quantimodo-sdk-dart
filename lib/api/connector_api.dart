@@ -12,10 +12,10 @@ class ConnectorApi {
   }
 
   
-  /// Get all Connectors
+  /// Get list of Connectors
   ///
-  /// Get all Connectors
-  Future<InlineResponse2005> connectorsGet(String name, String displayName, String image, String getItUrl, String shortDescription, String longDescription, bool enabled, bool oauth, int limit, int offset, String sort) {
+  /// A connector pulls data from other data providers using their API or a screenscraper. Returns a list of all available connectors and information about them such as their id, name, whether the user has provided access, logo url, connection instructions, and the update history.
+  Future<InlineResponse20015> connectorsGet(String accessToken, String name, String displayName, String image, String getItUrl, String shortDescription, String longDescription, bool enabled, bool oauth, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class ConnectorApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != name)
       queryParams["name"] = name is List ? name.join(',') : name;
     if("null" != displayName)
@@ -54,7 +56,7 @@ class ConnectorApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -72,7 +74,7 @@ class ConnectorApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2005);
+        return ApiClient.deserialize(response.body, InlineResponse20015);
       }
       else {
         return null;
@@ -83,7 +85,7 @@ class ConnectorApi {
   /// Store Connector
   ///
   /// Store Connector
-  Future<InlineResponse2006> connectorsPost(Connector body) {
+  Future<InlineResponse20016> connectorsPost(String accessToken, Connector body) {
     Object postBody = body;
     
 
@@ -94,13 +96,15 @@ class ConnectorApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -118,7 +122,7 @@ class ConnectorApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2006);
+        return ApiClient.deserialize(response.body, InlineResponse20016);
       }
       else {
         return null;
@@ -126,10 +130,10 @@ class ConnectorApi {
     });
   }
   
-  /// Get Connector
+  /// Get connector info for user
   ///
-  /// Get Connector
-  Future<InlineResponse2006> connectorsIdGet(int id) {
+  /// Returns information about the connector such as the connector id, whether or not is connected for this user (i.e. we have a token or credentials), and its update history for the user.
+  Future<InlineResponse20016> connectorsIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -140,13 +144,15 @@ class ConnectorApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -164,7 +170,7 @@ class ConnectorApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2006);
+        return ApiClient.deserialize(response.body, InlineResponse20016);
       }
       else {
         return null;
@@ -175,7 +181,7 @@ class ConnectorApi {
   /// Update Connector
   ///
   /// Update Connector
-  Future<InlineResponse2002> connectorsIdPut(int id, Connector body) {
+  Future<InlineResponse2002> connectorsIdPut(int id, String accessToken, Connector body) {
     Object postBody = body;
     
 
@@ -186,13 +192,15 @@ class ConnectorApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -221,7 +229,7 @@ class ConnectorApi {
   /// Delete Connector
   ///
   /// Delete Connector
-  Future<InlineResponse2002> connectorsIdDelete(int id) {
+  Future<InlineResponse2002> connectorsIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -232,13 +240,15 @@ class ConnectorApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

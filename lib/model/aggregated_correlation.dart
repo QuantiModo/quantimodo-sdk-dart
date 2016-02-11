@@ -6,87 +6,90 @@ class AggregatedCorrelation {
   /* id */
   int id = null;
   
-  /* correlation */
+  /* Pearson correlation coefficient between cause and effect measurements */
   num correlation = null;
   
-  /* cause_id */
+  /* variable ID of the cause variable for which the user desires correlations */
   int causeId = null;
   
-  /* effect_id */
+  /* variable ID of the effect variable for which the user desires correlations */
   int effectId = null;
   
-  /* onset_delay */
+  /* User estimated or default time after cause measurement before a perceivable effect is observed */
   int onsetDelay = null;
   
-  /* duration_of_action */
+  /* Time over which the cause is expected to produce a perceivable effect following the onset delay */
   int durationOfAction = null;
   
-  /* number_of_pairs */
+  /* Number of points that went into the correlation calculation */
   int numberOfPairs = null;
   
-  /* value_predicting_high_outcome */
+  /* cause value that predicts an above average effect value (in default unit for cause variable) */
   num valuePredictingHighOutcome = null;
   
-  /* value_predicting_low_outcome */
+  /* cause value that predicts a below average effect value (in default unit for cause variable) */
   num valuePredictingLowOutcome = null;
   
-  /* optimal_pearson_product */
+  /* Optimal Pearson Product */
   num optimalPearsonProduct = null;
   
-  /* vote */
+  /* Vote */
   num vote = null;
   
-  /* number_of_users */
+  /* Number of Users by which correlation is aggregated */
   int numberOfUsers = null;
   
-  /* number_of_correlations */
+  /* Number of Correlations by which correlation is aggregated */
   int numberOfCorrelations = null;
   
-  /* statistical_significance */
+  /* A function of the effect size and sample size */
   num statisticalSignificance = null;
   
-  /* cause_unit */
+  /* Unit of the predictor variable */
   String causeUnit = null;
   
-  /* cause_unit_id */
+  /* Unit ID of the predictor variable */
   int causeUnitId = null;
   
-  /* cause_changes */
+  /* Cause changes */
   int causeChanges = null;
   
-  /* effect_changes */
+  /* Effect changes */
   int effectChanges = null;
   
-  /* aggregate_qm_score */
+  /* Aggregated QM Score */
   num aggregateQmScore = null;
   
-  /* created_at */
+  /* When the record was first created. Use ISO 8601 datetime format */
   DateTime createdAt = null;
   
-  /* updated_at */
+  /* When the record in the database was last updated. Use ISO 8601 datetime format */
   DateTime updatedAt = null;
   
-  /* status */
+  /* Status */
   String status = null;
   
-  /* error_message */
+  /* Error Message */
   String errorMessage = null;
   
-  /* last_successful_update_time */
+  /* Last Successful update time */
   DateTime lastSuccessfulUpdateTime = null;
   
-  /* reverse_pearson_correlation_coefficient */
+  /* Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation */
   num reversePearsonCorrelationCoefficient = null;
   
-  /* predictive_pearson_correlation_coefficient */
+  /* Predictive Pearson Correlation Coefficient */
   num predictivePearsonCorrelationCoefficient = null;
+  
+  /* Source of data for this correlation */
+  String dataSource = null;
   
   
   AggregatedCorrelation();
 
   @override
   String toString()  {
-    return 'AggregatedCorrelation[id=$id, correlation=$correlation, causeId=$causeId, effectId=$effectId, onsetDelay=$onsetDelay, durationOfAction=$durationOfAction, numberOfPairs=$numberOfPairs, valuePredictingHighOutcome=$valuePredictingHighOutcome, valuePredictingLowOutcome=$valuePredictingLowOutcome, optimalPearsonProduct=$optimalPearsonProduct, vote=$vote, numberOfUsers=$numberOfUsers, numberOfCorrelations=$numberOfCorrelations, statisticalSignificance=$statisticalSignificance, causeUnit=$causeUnit, causeUnitId=$causeUnitId, causeChanges=$causeChanges, effectChanges=$effectChanges, aggregateQmScore=$aggregateQmScore, createdAt=$createdAt, updatedAt=$updatedAt, status=$status, errorMessage=$errorMessage, lastSuccessfulUpdateTime=$lastSuccessfulUpdateTime, reversePearsonCorrelationCoefficient=$reversePearsonCorrelationCoefficient, predictivePearsonCorrelationCoefficient=$predictivePearsonCorrelationCoefficient, ]';
+    return 'AggregatedCorrelation[id=$id, correlation=$correlation, causeId=$causeId, effectId=$effectId, onsetDelay=$onsetDelay, durationOfAction=$durationOfAction, numberOfPairs=$numberOfPairs, valuePredictingHighOutcome=$valuePredictingHighOutcome, valuePredictingLowOutcome=$valuePredictingLowOutcome, optimalPearsonProduct=$optimalPearsonProduct, vote=$vote, numberOfUsers=$numberOfUsers, numberOfCorrelations=$numberOfCorrelations, statisticalSignificance=$statisticalSignificance, causeUnit=$causeUnit, causeUnitId=$causeUnitId, causeChanges=$causeChanges, effectChanges=$effectChanges, aggregateQmScore=$aggregateQmScore, createdAt=$createdAt, updatedAt=$updatedAt, status=$status, errorMessage=$errorMessage, lastSuccessfulUpdateTime=$lastSuccessfulUpdateTime, reversePearsonCorrelationCoefficient=$reversePearsonCorrelationCoefficient, predictivePearsonCorrelationCoefficient=$predictivePearsonCorrelationCoefficient, dataSource=$dataSource, ]';
   }
 
 }

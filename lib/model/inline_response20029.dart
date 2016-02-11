@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20029 {
   
-  List<Vote> data = [];
+  UserVariableRelationship data = null;
   
   
   bool success = null;

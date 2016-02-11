@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse2005 {
   
-  List<Connector> data = [];
+  List<Measurement> data = [];
   
   
   bool success = null;

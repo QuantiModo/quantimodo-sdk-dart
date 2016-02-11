@@ -15,7 +15,7 @@ class UpdateApi {
   /// Get all Updates
   ///
   /// Get all Updates
-  Future<InlineResponse20019> updatesGet(int userId, int connectorId, int numberOfMeasurements, bool success, String message, String createdAt, String updatedAt, int limit, int offset, String sort) {
+  Future<InlineResponse2007> updatesGet(String accessToken, int userId, int connectorId, int numberOfMeasurements, bool success, String message, String createdAt, String updatedAt, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class UpdateApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != userId)
       queryParams["user_id"] = userId is List ? userId.join(',') : userId;
     if("null" != connectorId)
@@ -52,7 +54,7 @@ class UpdateApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -70,7 +72,7 @@ class UpdateApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20019);
+        return ApiClient.deserialize(response.body, InlineResponse2007);
       }
       else {
         return null;
@@ -81,7 +83,7 @@ class UpdateApi {
   /// Store Update
   ///
   /// Store Update
-  Future<InlineResponse20020> updatesPost(Update body) {
+  Future<InlineResponse20028> updatesPost(String accessToken, Update body) {
     Object postBody = body;
     
 
@@ -92,13 +94,15 @@ class UpdateApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -116,7 +120,7 @@ class UpdateApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20020);
+        return ApiClient.deserialize(response.body, InlineResponse20028);
       }
       else {
         return null;
@@ -127,7 +131,7 @@ class UpdateApi {
   /// Get Update
   ///
   /// Get Update
-  Future<InlineResponse20020> updatesIdGet(int id) {
+  Future<InlineResponse20028> updatesIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -138,13 +142,15 @@ class UpdateApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -162,7 +168,7 @@ class UpdateApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20020);
+        return ApiClient.deserialize(response.body, InlineResponse20028);
       }
       else {
         return null;
@@ -173,7 +179,7 @@ class UpdateApi {
   /// Update Update
   ///
   /// Update Update
-  Future<InlineResponse2002> updatesIdPut(int id, Update body) {
+  Future<InlineResponse2002> updatesIdPut(int id, String accessToken, Update body) {
     Object postBody = body;
     
 
@@ -184,13 +190,15 @@ class UpdateApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -219,7 +227,7 @@ class UpdateApi {
   /// Delete Update
   ///
   /// Delete Update
-  Future<InlineResponse2002> updatesIdDelete(int id) {
+  Future<InlineResponse2002> updatesIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -230,13 +238,15 @@ class UpdateApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

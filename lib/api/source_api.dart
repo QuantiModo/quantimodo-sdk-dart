@@ -12,10 +12,10 @@ class SourceApi {
   }
 
   
-  /// Get all Sources
+  /// Get measurement sources
   ///
-  /// Get all Sources
-  Future<InlineResponse20013> sourcesGet(String clientId, String name, String createdAt, String updatedAt, int limit, int offset, String sort) {
+  /// Returns a list of all the apps from which measurement data is obtained.
+  Future<InlineResponse20021> sourcesGet(String accessToken, String clientId, String name, String createdAt, String updatedAt, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class SourceApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != clientId)
       queryParams["client_id"] = clientId is List ? clientId.join(',') : clientId;
     if("null" != name)
@@ -46,7 +48,7 @@ class SourceApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -64,7 +66,7 @@ class SourceApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20013);
+        return ApiClient.deserialize(response.body, InlineResponse20021);
       }
       else {
         return null;
@@ -72,10 +74,10 @@ class SourceApi {
     });
   }
   
-  /// Store Source
+  /// Add a data source
   ///
-  /// Store Source
-  Future<InlineResponse20014> sourcesPost(Source body) {
+  /// Add a life-tracking app or device to the QuantiModo list of data sources.
+  Future<InlineResponse20022> sourcesPost(String accessToken, Source body) {
     Object postBody = body;
     
 
@@ -86,13 +88,15 @@ class SourceApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -110,7 +114,7 @@ class SourceApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20014);
+        return ApiClient.deserialize(response.body, InlineResponse20022);
       }
       else {
         return null;
@@ -121,7 +125,7 @@ class SourceApi {
   /// Get Source
   ///
   /// Get Source
-  Future<InlineResponse20014> sourcesIdGet(int id) {
+  Future<InlineResponse20022> sourcesIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -132,13 +136,15 @@ class SourceApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -156,7 +162,7 @@ class SourceApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20014);
+        return ApiClient.deserialize(response.body, InlineResponse20022);
       }
       else {
         return null;
@@ -167,7 +173,7 @@ class SourceApi {
   /// Update Source
   ///
   /// Update Source
-  Future<InlineResponse2002> sourcesIdPut(int id, Source body) {
+  Future<InlineResponse2002> sourcesIdPut(int id, String accessToken, Source body) {
     Object postBody = body;
     
 
@@ -178,13 +184,15 @@ class SourceApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -213,7 +221,7 @@ class SourceApi {
   /// Delete Source
   ///
   /// Delete Source
-  Future<InlineResponse2002> sourcesIdDelete(int id) {
+  Future<InlineResponse2002> sourcesIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -224,13 +232,15 @@ class SourceApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

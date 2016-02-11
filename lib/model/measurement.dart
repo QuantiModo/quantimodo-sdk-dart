@@ -12,7 +12,7 @@ class Measurement {
   /* client_id */
   String clientId = null;
   
-  /* Connector ID */
+  /* The id for the connector data source from which the measurement was obtained */
   int connectorId = null;
   
   /* ID of the variable for which we are creating the measurement records */
@@ -21,40 +21,40 @@ class Measurement {
   /* Application or device used to record the measurement values */
   int sourceId = null;
   
-  /* Start Time for the measurement event in ISO 8601 */
-  int startTime = null;
+  /* Start Time for the measurement event. Use ISO 8601 */
+  String startTime = null;
   
-  /* Converted measurement value in requested unit */
+  /* The value of the measurement after conversion to the default unit for that variable */
   num value = null;
   
-  /* Unit ID of measurement as requested in GET request */
+  /* The default unit for the variable */
   int unitId = null;
   
-  /* Original value */
+  /* Value of measurement as originally posted (before conversion to default unit) */
   num originalValue = null;
   
   /* Unit ID of measurement as originally submitted */
   int originalUnitId = null;
   
-  /* duration of measurement in seconds */
+  /* Duration of the event being measurement in seconds */
   int duration = null;
   
-  /* Note of measurement */
+  /* An optional note the user may include with their measurement */
   String note = null;
   
-  /* latitude */
+  /* Latitude at which the measurement was taken */
   num latitude = null;
   
-  /* longitude */
+  /* Longitude at which the measurement was taken */
   num longitude = null;
   
   /* location */
   String location = null;
   
-  /* created_at */
+  /* When the record was first created. Use ISO 8601 datetime format */
   DateTime createdAt = null;
   
-  /* updated_at */
+  /* When the record in the database was last updated. Use ISO 8601 datetime format */
   DateTime updatedAt = null;
   
   /* error */

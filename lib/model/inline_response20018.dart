@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20018 {
   
-  Unit data = null;
+  Correlation data = null;
   
   
   bool success = null;

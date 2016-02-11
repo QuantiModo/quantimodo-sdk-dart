@@ -15,7 +15,7 @@ class UserVariableApi {
   /// Get all UserVariables
   ///
   /// Get all UserVariables
-  Future<InlineResponse20021> userVariablesGet(String clientId, int variableId, int defaultUnitId, Number minimumAllowedValue, Number maximumAllowedValue, Number fillingValue, int joinWith, int onsetDelay, int durationOfAction, int variableCategoryId, int updated, int public, bool causeOnly, String fillingType, int numberOfMeasurements, int numberOfProcessedMeasurements, int measurementsAtLastAnalysis, int lastUnitId, int lastOriginalUnitId, int lastOriginalValue, Number lastValue, int lastSourceId, int numberOfCorrelations, String status, String errorMessage, String lastSuccessfulUpdateTime, Number standardDeviation, Number variance, Number minimumRecordedDailyValue, Number maximumRecordedDailyValue, Number mean, Number median, int mostCommonUnitId, Number mostCommonValue, Number numberOfUniqueDailyValues, int numberOfChanges, Number skewness, Number kurtosis, Number latitude, Number longitude, String location, String createdAt, String updatedAt, bool outcome, String sources, int earliestSourceTime, int latestSourceTime, int earliestMeasurementTime, int latestMeasurementTime, int earliestFillingTime, int latestFillingTime, int limit, int offset, String sort) {
+  Future<InlineResponse2009> userVariablesGet(String accessToken, String clientId, int parentId, int variableId, int userId, int defaultUnitId, Number minimumAllowedValue, Number maximumAllowedValue, Number fillingValue, int joinWith, int onsetDelay, int durationOfAction, int variableCategoryId, int updated, int public, bool causeOnly, String fillingType, int numberOfMeasurements, int numberOfProcessedMeasurements, int measurementsAtLastAnalysis, int lastUnitId, int lastOriginalUnitId, int lastOriginalValue, Number lastValue, Number lastOriginalValue2, int lastSourceId, int numberOfCorrelations, String status, String errorMessage, String lastSuccessfulUpdateTime, Number standardDeviation, Number variance, Number minimumRecordedValue, Number maximumRecordedValue, Number mean, Number median, int mostCommonUnitId, Number mostCommonValue, Number numberOfUniqueDailyValues, int numberOfChanges, Number skewness, Number kurtosis, Number latitude, Number longitude, String location, String createdAt, String updatedAt, bool outcome, String sources, int earliestSourceTime, int latestSourceTime, int earliestMeasurementTime, int latestMeasurementTime, int earliestFillingTime, int latestFillingTime, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,10 +26,16 @@ class UserVariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != clientId)
       queryParams["client_id"] = clientId is List ? clientId.join(',') : clientId;
+    if("null" != parentId)
+      queryParams["parent_id"] = parentId is List ? parentId.join(',') : parentId;
     if("null" != variableId)
       queryParams["variable_id"] = variableId is List ? variableId.join(',') : variableId;
+    if("null" != userId)
+      queryParams["user_id"] = userId is List ? userId.join(',') : userId;
     if("null" != defaultUnitId)
       queryParams["default_unit_id"] = defaultUnitId is List ? defaultUnitId.join(',') : defaultUnitId;
     if("null" != minimumAllowedValue)
@@ -68,6 +74,8 @@ class UserVariableApi {
       queryParams["last_original_value"] = lastOriginalValue is List ? lastOriginalValue.join(',') : lastOriginalValue;
     if("null" != lastValue)
       queryParams["last_value"] = lastValue is List ? lastValue.join(',') : lastValue;
+    if("null" != lastOriginalValue2)
+      queryParams["last_original_value"] = lastOriginalValue2 is List ? lastOriginalValue2.join(',') : lastOriginalValue2;
     if("null" != lastSourceId)
       queryParams["last_source_id"] = lastSourceId is List ? lastSourceId.join(',') : lastSourceId;
     if("null" != numberOfCorrelations)
@@ -82,10 +90,10 @@ class UserVariableApi {
       queryParams["standard_deviation"] = standardDeviation is List ? standardDeviation.join(',') : standardDeviation;
     if("null" != variance)
       queryParams["variance"] = variance is List ? variance.join(',') : variance;
-    if("null" != minimumRecordedDailyValue)
-      queryParams["minimum_recorded_daily_value"] = minimumRecordedDailyValue is List ? minimumRecordedDailyValue.join(',') : minimumRecordedDailyValue;
-    if("null" != maximumRecordedDailyValue)
-      queryParams["maximum_recorded_daily_value"] = maximumRecordedDailyValue is List ? maximumRecordedDailyValue.join(',') : maximumRecordedDailyValue;
+    if("null" != minimumRecordedValue)
+      queryParams["minimum_recorded_value"] = minimumRecordedValue is List ? minimumRecordedValue.join(',') : minimumRecordedValue;
+    if("null" != maximumRecordedValue)
+      queryParams["maximum_recorded_value"] = maximumRecordedValue is List ? maximumRecordedValue.join(',') : maximumRecordedValue;
     if("null" != mean)
       queryParams["mean"] = mean is List ? mean.join(',') : mean;
     if("null" != median)
@@ -140,7 +148,7 @@ class UserVariableApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -158,7 +166,7 @@ class UserVariableApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20021);
+        return ApiClient.deserialize(response.body, InlineResponse2009);
       }
       else {
         return null;
@@ -168,8 +176,8 @@ class UserVariableApi {
   
   /// Store UserVariable
   ///
-  /// Store UserVariable
-  Future<InlineResponse20022> userVariablesPost(UserVariable body) {
+  /// Users can change things like the display name for a variable. They can also change the parameters used in analysis of that variable such as the expected duration of action for a variable to have an effect, the estimated delay before the onset of action. In order to filter out erroneous data, they are able to set the maximum and minimum reasonable daily values for a variable.
+  Future<InlineResponse20030> userVariablesPost(String accessToken, UserVariable body) {
     Object postBody = body;
     
 
@@ -180,13 +188,15 @@ class UserVariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -204,7 +214,7 @@ class UserVariableApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20022);
+        return ApiClient.deserialize(response.body, InlineResponse20030);
       }
       else {
         return null;
@@ -215,7 +225,7 @@ class UserVariableApi {
   /// Get UserVariable
   ///
   /// Get UserVariable
-  Future<InlineResponse20022> userVariablesIdGet(int id) {
+  Future<InlineResponse20030> userVariablesIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -226,13 +236,15 @@ class UserVariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -250,7 +262,7 @@ class UserVariableApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20022);
+        return ApiClient.deserialize(response.body, InlineResponse20030);
       }
       else {
         return null;
@@ -261,7 +273,7 @@ class UserVariableApi {
   /// Update UserVariable
   ///
   /// Update UserVariable
-  Future<InlineResponse2002> userVariablesIdPut(int id, UserVariable body) {
+  Future<InlineResponse2002> userVariablesIdPut(int id, String accessToken, UserVariable body) {
     Object postBody = body;
     
 
@@ -272,13 +284,15 @@ class UserVariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -307,7 +321,7 @@ class UserVariableApi {
   /// Delete UserVariable
   ///
   /// Delete UserVariable
-  Future<InlineResponse2002> userVariablesIdDelete(int id) {
+  Future<InlineResponse2002> userVariablesIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -318,13 +332,15 @@ class UserVariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

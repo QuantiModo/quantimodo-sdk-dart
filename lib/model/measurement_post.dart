@@ -3,13 +3,13 @@ part of api;
 
 @Entity()
 class MeasurementPost {
-  /* variable_id */
+  /* ID of the variable for the measurement as obtained from the GET variables endpoint */
   int variableId = null;
   
-  /* source_id */
+  /* Source ID of the app or device as obtained from the GET sources endpoint */
   int sourceId = null;
   
-  /* unit_id */
+  /* Unit id for the measurement value as obtained from the GET units endpoint */
   int unitId = null;
   
   /* measurements */

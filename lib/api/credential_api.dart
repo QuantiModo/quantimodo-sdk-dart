@@ -15,7 +15,7 @@ class CredentialApi {
   /// Get all Credentials
   ///
   /// Get all Credentials
-  Future<InlineResponse2009> credentialsGet(bool connectorId, String attrKey, String attrValue, String createdAt, String updatedAt, int limit, int offset, String sort) {
+  Future<InlineResponse2004> credentialsGet(String accessToken, int userId, int connectorId, String attrKey, String attrValue, String createdAt, String updatedAt, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,10 @@ class CredentialApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
+    if("null" != userId)
+      queryParams["user_id"] = userId is List ? userId.join(',') : userId;
     if("null" != connectorId)
       queryParams["connector_id"] = connectorId is List ? connectorId.join(',') : connectorId;
     if("null" != attrKey)
@@ -48,7 +52,7 @@ class CredentialApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -66,7 +70,7 @@ class CredentialApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2009);
+        return ApiClient.deserialize(response.body, InlineResponse2004);
       }
       else {
         return null;
@@ -77,7 +81,7 @@ class CredentialApi {
   /// Store Credential
   ///
   /// Store Credential
-  Future<InlineResponse20010> credentialsPost(Credential body) {
+  Future<InlineResponse20019> credentialsPost(String accessToken, Credential body) {
     Object postBody = body;
     
 
@@ -88,13 +92,15 @@ class CredentialApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -112,7 +118,7 @@ class CredentialApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20010);
+        return ApiClient.deserialize(response.body, InlineResponse20019);
       }
       else {
         return null;
@@ -123,7 +129,7 @@ class CredentialApi {
   /// Get Credential
   ///
   /// Get Credential
-  Future<InlineResponse20010> credentialsIdGet(int id, String attrKey) {
+  Future<InlineResponse20019> credentialsIdGet(int id, String attrKey, String accessToken) {
     Object postBody = null;
     
 
@@ -134,6 +140,8 @@ class CredentialApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != attrKey)
       queryParams["attrKey"] = attrKey is List ? attrKey.join(',') : attrKey;
     
@@ -142,7 +150,7 @@ class CredentialApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -160,7 +168,7 @@ class CredentialApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20010);
+        return ApiClient.deserialize(response.body, InlineResponse20019);
       }
       else {
         return null;
@@ -171,7 +179,7 @@ class CredentialApi {
   /// Update Credential
   ///
   /// Update Credential
-  Future<InlineResponse2002> credentialsIdPut(int id, String attrKey, Credential body) {
+  Future<InlineResponse2002> credentialsIdPut(int id, String attrKey, String accessToken, Credential body) {
     Object postBody = body;
     
 
@@ -182,6 +190,8 @@ class CredentialApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != attrKey)
       queryParams["attrKey"] = attrKey is List ? attrKey.join(',') : attrKey;
     
@@ -190,7 +200,7 @@ class CredentialApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -219,7 +229,7 @@ class CredentialApi {
   /// Delete Credential
   ///
   /// Delete Credential
-  Future<InlineResponse2002> credentialsIdDelete(int id, String attrKey) {
+  Future<InlineResponse2002> credentialsIdDelete(int id, String attrKey, String accessToken) {
     Object postBody = null;
     
 
@@ -230,6 +240,8 @@ class CredentialApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != attrKey)
       queryParams["attrKey"] = attrKey is List ? attrKey.join(',') : attrKey;
     
@@ -238,7 +250,7 @@ class CredentialApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20030 {
   
-  Vote data = null;
+  UserVariable data = null;
   
   
   bool success = null;

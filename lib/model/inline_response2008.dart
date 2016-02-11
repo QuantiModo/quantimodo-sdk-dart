@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse2008 {
   
-  Correlation data = null;
+  List<UserVariableRelationship> data = [];
   
   
   bool success = null;

@@ -12,10 +12,10 @@ class MeasurementApi {
   }
 
   
-  /// Get all Measurements
+  /// Get measurements for this user
   ///
-  /// Get all Measurements
-  Future<InlineResponse20011> measurementsGet(int userId, String clientId, int connectorId, int variableId, int startTime, Number value, Number originalValue, int duration, String note, Number latitude, Number longitude, String location, String createdAt, String updatedAt, String error, int limit, int offset, String sort) {
+  /// Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten.
+  Future<InlineResponse2005> measurementsGet(String accessToken, int userId, String clientId, int connectorId, int variableId, int sourceId, String startTime, Number value, int unitId, Number originalValue, int originalUnitId, int duration, String note, Number latitude, Number longitude, String location, String createdAt, String updatedAt, String error, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class MeasurementApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != userId)
       queryParams["user_id"] = userId is List ? userId.join(',') : userId;
     if("null" != clientId)
@@ -34,12 +36,18 @@ class MeasurementApi {
       queryParams["connector_id"] = connectorId is List ? connectorId.join(',') : connectorId;
     if("null" != variableId)
       queryParams["variable_id"] = variableId is List ? variableId.join(',') : variableId;
+    if("null" != sourceId)
+      queryParams["source_id"] = sourceId is List ? sourceId.join(',') : sourceId;
     if("null" != startTime)
       queryParams["start_time"] = startTime is List ? startTime.join(',') : startTime;
     if("null" != value)
       queryParams["value"] = value is List ? value.join(',') : value;
+    if("null" != unitId)
+      queryParams["unit_id"] = unitId is List ? unitId.join(',') : unitId;
     if("null" != originalValue)
       queryParams["original_value"] = originalValue is List ? originalValue.join(',') : originalValue;
+    if("null" != originalUnitId)
+      queryParams["original_unit_id"] = originalUnitId is List ? originalUnitId.join(',') : originalUnitId;
     if("null" != duration)
       queryParams["duration"] = duration is List ? duration.join(',') : duration;
     if("null" != note)
@@ -68,7 +76,7 @@ class MeasurementApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -86,7 +94,7 @@ class MeasurementApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20011);
+        return ApiClient.deserialize(response.body, InlineResponse2005);
       }
       else {
         return null;
@@ -94,10 +102,10 @@ class MeasurementApi {
     });
   }
   
-  /// Store Measurement
+  /// Post a new set or update existing measurements to the database
   ///
-  /// Store Measurement
-  Future<InlineResponse20011> measurementsPost(MeasurementPost body) {
+  /// You can submit or update multiple measurements in a measurements sub-array.  If the variable these measurements correspond to does not already exist in the database, it will be automatically added.
+  Future<InlineResponse2005> measurementsPost(String accessToken, MeasurementPost body) {
     Object postBody = body;
     
 
@@ -108,13 +116,15 @@ class MeasurementApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -132,7 +142,7 @@ class MeasurementApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20011);
+        return ApiClient.deserialize(response.body, InlineResponse2005);
       }
       else {
         return null;
@@ -143,7 +153,7 @@ class MeasurementApi {
   /// Get Measurements CSV
   ///
   /// Download a CSV containing all user measurements
-  Future<MultipartFile> measurementsCsvGet() {
+  Future<MultipartFile> measurementsCsvGet(String accessToken) {
     Object postBody = null;
     
 
@@ -154,13 +164,15 @@ class MeasurementApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -189,7 +201,7 @@ class MeasurementApi {
   /// Post Request for Measurements CSV
   ///
   /// Use this endpoint to schedule a CSV export containing all user measurements to be emailed to the user within 24 hours.
-  Future<int> measurementsRequestCsvPost() {
+  Future<int> measurementsRequestCsvPost(String accessToken) {
     Object postBody = null;
     
 
@@ -200,13 +212,15 @@ class MeasurementApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -235,7 +249,7 @@ class MeasurementApi {
   /// Get Measurement
   ///
   /// Get Measurement
-  Future<InlineResponse20012> measurementsIdGet(int id) {
+  Future<InlineResponse20020> measurementsIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -246,13 +260,15 @@ class MeasurementApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -270,7 +286,7 @@ class MeasurementApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20012);
+        return ApiClient.deserialize(response.body, InlineResponse20020);
       }
       else {
         return null;
@@ -281,7 +297,7 @@ class MeasurementApi {
   /// Update Measurement
   ///
   /// Update Measurement
-  Future<InlineResponse2002> measurementsIdPut(int id, Measurement body) {
+  Future<InlineResponse2002> measurementsIdPut(int id, String accessToken, Measurement body) {
     Object postBody = body;
     
 
@@ -292,13 +308,15 @@ class MeasurementApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -327,7 +345,7 @@ class MeasurementApi {
   /// Delete Measurement
   ///
   /// Delete Measurement
-  Future<InlineResponse2002> measurementsIdDelete(int id) {
+  Future<InlineResponse2002> measurementsIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -338,13 +356,15 @@ class MeasurementApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

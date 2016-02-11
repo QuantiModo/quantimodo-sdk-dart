@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20011 {
   
-  List<Measurement> data = [];
+  List<Vote> data = [];
   
   
   bool success = null;

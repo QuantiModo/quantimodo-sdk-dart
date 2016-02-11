@@ -15,7 +15,7 @@ class VoteApi {
   /// Get all Votes
   ///
   /// Get all Votes
-  Future<InlineResponse20029> votesGet(String clientId, int userId, int causeId, int effectId, int value, String createdAt, String updatedAt, int limit, int offset, String sort) {
+  Future<InlineResponse20011> votesGet(String accessToken, String clientId, int userId, int causeId, int effectId, int value, String createdAt, String updatedAt, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class VoteApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != clientId)
       queryParams["client_id"] = clientId is List ? clientId.join(',') : clientId;
     if("null" != userId)
@@ -52,7 +54,7 @@ class VoteApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -70,7 +72,7 @@ class VoteApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20029);
+        return ApiClient.deserialize(response.body, InlineResponse20011);
       }
       else {
         return null;
@@ -80,8 +82,8 @@ class VoteApi {
   
   /// Store Vote
   ///
-  /// Store Vote
-  Future<InlineResponse20030> votesPost(Vote body) {
+  /// This is to enable users to indicate their opinion on the plausibility of a causal relationship between a treatment and outcome. QuantiModo incorporates crowd-sourced plausibility estimations into their algorithm. This is done allowing user to indicate their view of the plausibility of each relationship with thumbs up/down buttons placed next to each prediction.
+  Future<InlineResponse20036> votesPost(String accessToken, Vote body) {
     Object postBody = body;
     
 
@@ -92,13 +94,15 @@ class VoteApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -116,7 +120,7 @@ class VoteApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20030);
+        return ApiClient.deserialize(response.body, InlineResponse20036);
       }
       else {
         return null;
@@ -127,7 +131,7 @@ class VoteApi {
   /// Get Vote
   ///
   /// Get Vote
-  Future<InlineResponse20030> votesIdGet(int id) {
+  Future<InlineResponse20036> votesIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -138,13 +142,15 @@ class VoteApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -162,7 +168,7 @@ class VoteApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20030);
+        return ApiClient.deserialize(response.body, InlineResponse20036);
       }
       else {
         return null;
@@ -173,7 +179,7 @@ class VoteApi {
   /// Update Vote
   ///
   /// Update Vote
-  Future<InlineResponse2002> votesIdPut(int id, Vote body) {
+  Future<InlineResponse2002> votesIdPut(int id, String accessToken, Vote body) {
     Object postBody = body;
     
 
@@ -184,13 +190,15 @@ class VoteApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -218,8 +226,8 @@ class VoteApi {
   
   /// Delete Vote
   ///
-  /// Delete Vote
-  Future<InlineResponse2002> votesIdDelete(int id) {
+  /// Delete previously posted vote
+  Future<InlineResponse2002> votesIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -230,13 +238,15 @@ class VoteApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse2006 {
   
-  Connector data = null;
+  List<TrackingReminder> data = [];
   
   
   bool success = null;

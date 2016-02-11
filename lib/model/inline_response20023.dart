@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20023 {
   
-  List<VariableCategory> data = [];
+  TrackingReminder data = null;
   
   
   bool success = null;

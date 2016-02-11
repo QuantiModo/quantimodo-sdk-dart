@@ -15,7 +15,7 @@ class ConnectionApi {
   /// Get all Connections
   ///
   /// Get all Connections
-  Future<InlineResponse2003> connectionsGet(int userId, int connectorId, String connectStatus, String connectError, String updateRequestedAt, String updateStatus, String updateError, String lastSuccessfulUpdatedAt, String createdAt, String updatedAt, int limit, int offset, String sort) {
+  Future<InlineResponse2003> connectionsGet(String accessToken, int userId, int connectorId, String connectStatus, String connectError, String updateRequestedAt, String updateStatus, String updateError, String lastSuccessfulUpdatedAt, String createdAt, String updatedAt, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class ConnectionApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != userId)
       queryParams["user_id"] = userId is List ? userId.join(',') : userId;
     if("null" != connectorId)
@@ -87,7 +89,7 @@ class ConnectionApi {
   /// Store Connection
   ///
   /// Store Connection
-  Future<InlineResponse2004> connectionsPost(Connection body) {
+  Future<InlineResponse20014> connectionsPost(String accessToken, Connection body) {
     Object postBody = body;
     
 
@@ -98,6 +100,8 @@ class ConnectionApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
@@ -122,7 +126,7 @@ class ConnectionApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2004);
+        return ApiClient.deserialize(response.body, InlineResponse20014);
       }
       else {
         return null;
@@ -133,7 +137,7 @@ class ConnectionApi {
   /// Get Connection
   ///
   /// Get Connection
-  Future<InlineResponse2004> connectionsIdGet(int id) {
+  Future<InlineResponse20014> connectionsIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -144,6 +148,8 @@ class ConnectionApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
@@ -168,7 +174,7 @@ class ConnectionApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2004);
+        return ApiClient.deserialize(response.body, InlineResponse20014);
       }
       else {
         return null;
@@ -179,7 +185,7 @@ class ConnectionApi {
   /// Update Connection
   ///
   /// Update Connection
-  Future<InlineResponse2002> connectionsIdPut(int id, Connection body) {
+  Future<InlineResponse2002> connectionsIdPut(int id, String accessToken, Connection body) {
     Object postBody = body;
     
 
@@ -190,6 +196,8 @@ class ConnectionApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
@@ -225,7 +233,7 @@ class ConnectionApi {
   /// Delete Connection
   ///
   /// Delete Connection
-  Future<InlineResponse2002> connectionsIdDelete(int id) {
+  Future<InlineResponse2002> connectionsIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -236,6 +244,8 @@ class ConnectionApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 

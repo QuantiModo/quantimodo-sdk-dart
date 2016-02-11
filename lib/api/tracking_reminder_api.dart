@@ -1,26 +1,26 @@
 part of api;
 
 
-class AggregatedCorrelationApi {
+class TrackingReminderApi {
   String basePath = "https://app.quantimo.do/api/v2";
   ApiClient apiClient = ApiClient.defaultApiClient;
 
-  AggregatedCorrelationApi([ApiClient apiClient]) {
+  TrackingReminderApi([ApiClient apiClient]) {
     if (apiClient != null) {
       this.apiClient = apiClient;
     }
   }
 
   
-  /// Get all AggregatedCorrelations
+  /// Get tracking reminders
   ///
-  /// Get all AggregatedCorrelations
-  Future<InlineResponse200> aggregatedCorrelationsGet(String accessToken, Number correlation, int causeId, int effectId, int onsetDelay, int durationOfAction, int numberOfPairs, Number valuePredictingHighOutcome, Number valuePredictingLowOutcome, Number optimalPearsonProduct, int numberOfUsers, int numberOfCorrelations, Number statisticalSignificance, String causeUnit, int causeUnitId, int causeChanges, int effectChanges, Number aggregateQmScore, String createdAt, String updatedAt, String status, String errorMessage, String lastSuccessfulUpdateTime, Number reversePearsonCorrelationCoefficient, Number predictivePearsonCorrelationCoefficient, int limit, int offset, String sort) {
+  /// Users can be reminded to track certain variables at a specified frequency with a default value.
+  Future<InlineResponse2006> trackingRemindersGet(String accessToken, String clientId, int userId, int variableId, bool popUp, bool sms, bool email, bool notificationBar, String lastReminded, String lastTracked, String createdAt, String updatedAt, int limit, int offset, String sort) {
     Object postBody = null;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations".replaceAll("{format}","json");
+    String path = "/trackingReminders".replaceAll("{format}","json");
 
     // query params
     Map<String, String> queryParams = {};
@@ -28,54 +28,28 @@ class AggregatedCorrelationApi {
     Map<String, String> formParams = {};
     if("null" != accessToken)
       queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
-    if("null" != correlation)
-      queryParams["correlation"] = correlation is List ? correlation.join(',') : correlation;
-    if("null" != causeId)
-      queryParams["cause_id"] = causeId is List ? causeId.join(',') : causeId;
-    if("null" != effectId)
-      queryParams["effect_id"] = effectId is List ? effectId.join(',') : effectId;
-    if("null" != onsetDelay)
-      queryParams["onset_delay"] = onsetDelay is List ? onsetDelay.join(',') : onsetDelay;
-    if("null" != durationOfAction)
-      queryParams["duration_of_action"] = durationOfAction is List ? durationOfAction.join(',') : durationOfAction;
-    if("null" != numberOfPairs)
-      queryParams["number_of_pairs"] = numberOfPairs is List ? numberOfPairs.join(',') : numberOfPairs;
-    if("null" != valuePredictingHighOutcome)
-      queryParams["value_predicting_high_outcome"] = valuePredictingHighOutcome is List ? valuePredictingHighOutcome.join(',') : valuePredictingHighOutcome;
-    if("null" != valuePredictingLowOutcome)
-      queryParams["value_predicting_low_outcome"] = valuePredictingLowOutcome is List ? valuePredictingLowOutcome.join(',') : valuePredictingLowOutcome;
-    if("null" != optimalPearsonProduct)
-      queryParams["optimal_pearson_product"] = optimalPearsonProduct is List ? optimalPearsonProduct.join(',') : optimalPearsonProduct;
-    if("null" != numberOfUsers)
-      queryParams["number_of_users"] = numberOfUsers is List ? numberOfUsers.join(',') : numberOfUsers;
-    if("null" != numberOfCorrelations)
-      queryParams["number_of_correlations"] = numberOfCorrelations is List ? numberOfCorrelations.join(',') : numberOfCorrelations;
-    if("null" != statisticalSignificance)
-      queryParams["statistical_significance"] = statisticalSignificance is List ? statisticalSignificance.join(',') : statisticalSignificance;
-    if("null" != causeUnit)
-      queryParams["cause_unit"] = causeUnit is List ? causeUnit.join(',') : causeUnit;
-    if("null" != causeUnitId)
-      queryParams["cause_unit_id"] = causeUnitId is List ? causeUnitId.join(',') : causeUnitId;
-    if("null" != causeChanges)
-      queryParams["cause_changes"] = causeChanges is List ? causeChanges.join(',') : causeChanges;
-    if("null" != effectChanges)
-      queryParams["effect_changes"] = effectChanges is List ? effectChanges.join(',') : effectChanges;
-    if("null" != aggregateQmScore)
-      queryParams["aggregate_qm_score"] = aggregateQmScore is List ? aggregateQmScore.join(',') : aggregateQmScore;
+    if("null" != clientId)
+      queryParams["client_id"] = clientId is List ? clientId.join(',') : clientId;
+    if("null" != userId)
+      queryParams["user_id"] = userId is List ? userId.join(',') : userId;
+    if("null" != variableId)
+      queryParams["variable_id"] = variableId is List ? variableId.join(',') : variableId;
+    if("null" != popUp)
+      queryParams["pop_up"] = popUp is List ? popUp.join(',') : popUp;
+    if("null" != sms)
+      queryParams["sms"] = sms is List ? sms.join(',') : sms;
+    if("null" != email)
+      queryParams["email"] = email is List ? email.join(',') : email;
+    if("null" != notificationBar)
+      queryParams["notification_bar"] = notificationBar is List ? notificationBar.join(',') : notificationBar;
+    if("null" != lastReminded)
+      queryParams["last_reminded"] = lastReminded is List ? lastReminded.join(',') : lastReminded;
+    if("null" != lastTracked)
+      queryParams["last_tracked"] = lastTracked is List ? lastTracked.join(',') : lastTracked;
     if("null" != createdAt)
       queryParams["created_at"] = createdAt is List ? createdAt.join(',') : createdAt;
     if("null" != updatedAt)
       queryParams["updated_at"] = updatedAt is List ? updatedAt.join(',') : updatedAt;
-    if("null" != status)
-      queryParams["status"] = status is List ? status.join(',') : status;
-    if("null" != errorMessage)
-      queryParams["error_message"] = errorMessage is List ? errorMessage.join(',') : errorMessage;
-    if("null" != lastSuccessfulUpdateTime)
-      queryParams["last_successful_update_time"] = lastSuccessfulUpdateTime is List ? lastSuccessfulUpdateTime.join(',') : lastSuccessfulUpdateTime;
-    if("null" != reversePearsonCorrelationCoefficient)
-      queryParams["reverse_pearson_correlation_coefficient"] = reversePearsonCorrelationCoefficient is List ? reversePearsonCorrelationCoefficient.join(',') : reversePearsonCorrelationCoefficient;
-    if("null" != predictivePearsonCorrelationCoefficient)
-      queryParams["predictive_pearson_correlation_coefficient"] = predictivePearsonCorrelationCoefficient is List ? predictivePearsonCorrelationCoefficient.join(',') : predictivePearsonCorrelationCoefficient;
     if("null" != limit)
       queryParams["limit"] = limit is List ? limit.join(',') : limit;
     if("null" != offset)
@@ -106,7 +80,7 @@ class AggregatedCorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse200);
+        return ApiClient.deserialize(response.body, InlineResponse2006);
       }
       else {
         return null;
@@ -114,15 +88,15 @@ class AggregatedCorrelationApi {
     });
   }
   
-  /// Store AggregatedCorrelation
+  /// Store TrackingReminder
   ///
-  /// Store AggregatedCorrelation
-  Future<InlineResponse2001> aggregatedCorrelationsPost(String accessToken, AggregatedCorrelation body) {
+  /// This is to enable users to indicate their opinion on the plausibility of a causal relationship between a treatment and outcome. QuantiModo incorporates crowd-sourced plausibility estimations into their algorithm. This is done allowing user to indicate their view of the plausibility of each relationship with thumbs up/down buttons placed next to each prediction.
+  Future<InlineResponse20023> trackingRemindersPost(String accessToken, TrackingReminder body) {
     Object postBody = body;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations".replaceAll("{format}","json");
+    String path = "/trackingReminders".replaceAll("{format}","json");
 
     // query params
     Map<String, String> queryParams = {};
@@ -154,7 +128,7 @@ class AggregatedCorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2001);
+        return ApiClient.deserialize(response.body, InlineResponse20023);
       }
       else {
         return null;
@@ -162,15 +136,15 @@ class AggregatedCorrelationApi {
     });
   }
   
-  /// Get AggregatedCorrelation
+  /// Get TrackingReminder
   ///
-  /// Get AggregatedCorrelation
-  Future<InlineResponse2001> aggregatedCorrelationsIdGet(int id, String accessToken) {
+  /// Get TrackingReminder
+  Future<InlineResponse20023> trackingRemindersIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/trackingReminders/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
 
     // query params
     Map<String, String> queryParams = {};
@@ -202,7 +176,7 @@ class AggregatedCorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2001);
+        return ApiClient.deserialize(response.body, InlineResponse20023);
       }
       else {
         return null;
@@ -210,15 +184,15 @@ class AggregatedCorrelationApi {
     });
   }
   
-  /// Update AggregatedCorrelation
+  /// Update TrackingReminder
   ///
-  /// Update AggregatedCorrelation
-  Future<InlineResponse2002> aggregatedCorrelationsIdPut(int id, String accessToken, AggregatedCorrelation body) {
+  /// Update TrackingReminder
+  Future<InlineResponse2002> trackingRemindersIdPut(int id, String accessToken, TrackingReminder body) {
     Object postBody = body;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/trackingReminders/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
 
     // query params
     Map<String, String> queryParams = {};
@@ -258,15 +232,15 @@ class AggregatedCorrelationApi {
     });
   }
   
-  /// Delete AggregatedCorrelation
+  /// Delete TrackingReminder
   ///
-  /// Delete AggregatedCorrelation
-  Future<InlineResponse2002> aggregatedCorrelationsIdDelete(int id, String accessToken) {
+  /// Delete previously posted trackingReminder
+  Future<InlineResponse2002> trackingRemindersIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/trackingReminders/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
 
     // query params
     Map<String, String> queryParams = {};

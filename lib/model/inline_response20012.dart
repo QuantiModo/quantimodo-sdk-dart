@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20012 {
   
-  Measurement data = null;
+  List<CommonVariableRelationship> data = [];
   
   
   bool success = null;

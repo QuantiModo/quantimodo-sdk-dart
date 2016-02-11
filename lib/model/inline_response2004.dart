@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse2004 {
   
-  Connection data = null;
+  List<Credential> data = [];
   
   
   bool success = null;

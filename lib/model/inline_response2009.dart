@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse2009 {
   
-  List<Credential> data = [];
+  List<UserVariable> data = [];
   
   
   bool success = null;

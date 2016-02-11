@@ -1,26 +1,26 @@
 part of api;
 
 
-class AggregatedCorrelationApi {
+class UserVariableRelationshipApi {
   String basePath = "https://app.quantimo.do/api/v2";
   ApiClient apiClient = ApiClient.defaultApiClient;
 
-  AggregatedCorrelationApi([ApiClient apiClient]) {
+  UserVariableRelationshipApi([ApiClient apiClient]) {
     if (apiClient != null) {
       this.apiClient = apiClient;
     }
   }
 
   
-  /// Get all AggregatedCorrelations
+  /// Get all UserVariableRelationships
   ///
-  /// Get all AggregatedCorrelations
-  Future<InlineResponse200> aggregatedCorrelationsGet(String accessToken, Number correlation, int causeId, int effectId, int onsetDelay, int durationOfAction, int numberOfPairs, Number valuePredictingHighOutcome, Number valuePredictingLowOutcome, Number optimalPearsonProduct, int numberOfUsers, int numberOfCorrelations, Number statisticalSignificance, String causeUnit, int causeUnitId, int causeChanges, int effectChanges, Number aggregateQmScore, String createdAt, String updatedAt, String status, String errorMessage, String lastSuccessfulUpdateTime, Number reversePearsonCorrelationCoefficient, Number predictivePearsonCorrelationCoefficient, int limit, int offset, String sort) {
+  /// Get all UserVariableRelationships
+  Future<InlineResponse2008> userVariableRelationshipsGet(String accessToken, int id, String confidenceLevel, Number confidenceScore, String direction, int durationOfAction, String errorMessage, int onsetDelay, int outcomeVariableId, int predictorVariableId, int predictorUnitId, Number sinnRank, String strengthLevel, Number strengthScore, int userId, String vote, Number valuePredictingHighOutcome, Number valuePredictingLowOutcome, int limit, int offset, String sort) {
     Object postBody = null;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations".replaceAll("{format}","json");
+    String path = "/userVariableRelationships".replaceAll("{format}","json");
 
     // query params
     Map<String, String> queryParams = {};
@@ -28,54 +28,40 @@ class AggregatedCorrelationApi {
     Map<String, String> formParams = {};
     if("null" != accessToken)
       queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
-    if("null" != correlation)
-      queryParams["correlation"] = correlation is List ? correlation.join(',') : correlation;
-    if("null" != causeId)
-      queryParams["cause_id"] = causeId is List ? causeId.join(',') : causeId;
-    if("null" != effectId)
-      queryParams["effect_id"] = effectId is List ? effectId.join(',') : effectId;
-    if("null" != onsetDelay)
-      queryParams["onset_delay"] = onsetDelay is List ? onsetDelay.join(',') : onsetDelay;
+    if("null" != id)
+      queryParams["id"] = id is List ? id.join(',') : id;
+    if("null" != confidenceLevel)
+      queryParams["confidence_level"] = confidenceLevel is List ? confidenceLevel.join(',') : confidenceLevel;
+    if("null" != confidenceScore)
+      queryParams["confidence_score"] = confidenceScore is List ? confidenceScore.join(',') : confidenceScore;
+    if("null" != direction)
+      queryParams["direction"] = direction is List ? direction.join(',') : direction;
     if("null" != durationOfAction)
       queryParams["duration_of_action"] = durationOfAction is List ? durationOfAction.join(',') : durationOfAction;
-    if("null" != numberOfPairs)
-      queryParams["number_of_pairs"] = numberOfPairs is List ? numberOfPairs.join(',') : numberOfPairs;
+    if("null" != errorMessage)
+      queryParams["error_message"] = errorMessage is List ? errorMessage.join(',') : errorMessage;
+    if("null" != onsetDelay)
+      queryParams["onset_delay"] = onsetDelay is List ? onsetDelay.join(',') : onsetDelay;
+    if("null" != outcomeVariableId)
+      queryParams["outcome_variable_id"] = outcomeVariableId is List ? outcomeVariableId.join(',') : outcomeVariableId;
+    if("null" != predictorVariableId)
+      queryParams["predictor_variable_id"] = predictorVariableId is List ? predictorVariableId.join(',') : predictorVariableId;
+    if("null" != predictorUnitId)
+      queryParams["predictor_unit_id"] = predictorUnitId is List ? predictorUnitId.join(',') : predictorUnitId;
+    if("null" != sinnRank)
+      queryParams["sinn_rank"] = sinnRank is List ? sinnRank.join(',') : sinnRank;
+    if("null" != strengthLevel)
+      queryParams["strength_level"] = strengthLevel is List ? strengthLevel.join(',') : strengthLevel;
+    if("null" != strengthScore)
+      queryParams["strength_score"] = strengthScore is List ? strengthScore.join(',') : strengthScore;
+    if("null" != userId)
+      queryParams["user_id"] = userId is List ? userId.join(',') : userId;
+    if("null" != vote)
+      queryParams["vote"] = vote is List ? vote.join(',') : vote;
     if("null" != valuePredictingHighOutcome)
       queryParams["value_predicting_high_outcome"] = valuePredictingHighOutcome is List ? valuePredictingHighOutcome.join(',') : valuePredictingHighOutcome;
     if("null" != valuePredictingLowOutcome)
       queryParams["value_predicting_low_outcome"] = valuePredictingLowOutcome is List ? valuePredictingLowOutcome.join(',') : valuePredictingLowOutcome;
-    if("null" != optimalPearsonProduct)
-      queryParams["optimal_pearson_product"] = optimalPearsonProduct is List ? optimalPearsonProduct.join(',') : optimalPearsonProduct;
-    if("null" != numberOfUsers)
-      queryParams["number_of_users"] = numberOfUsers is List ? numberOfUsers.join(',') : numberOfUsers;
-    if("null" != numberOfCorrelations)
-      queryParams["number_of_correlations"] = numberOfCorrelations is List ? numberOfCorrelations.join(',') : numberOfCorrelations;
-    if("null" != statisticalSignificance)
-      queryParams["statistical_significance"] = statisticalSignificance is List ? statisticalSignificance.join(',') : statisticalSignificance;
-    if("null" != causeUnit)
-      queryParams["cause_unit"] = causeUnit is List ? causeUnit.join(',') : causeUnit;
-    if("null" != causeUnitId)
-      queryParams["cause_unit_id"] = causeUnitId is List ? causeUnitId.join(',') : causeUnitId;
-    if("null" != causeChanges)
-      queryParams["cause_changes"] = causeChanges is List ? causeChanges.join(',') : causeChanges;
-    if("null" != effectChanges)
-      queryParams["effect_changes"] = effectChanges is List ? effectChanges.join(',') : effectChanges;
-    if("null" != aggregateQmScore)
-      queryParams["aggregate_qm_score"] = aggregateQmScore is List ? aggregateQmScore.join(',') : aggregateQmScore;
-    if("null" != createdAt)
-      queryParams["created_at"] = createdAt is List ? createdAt.join(',') : createdAt;
-    if("null" != updatedAt)
-      queryParams["updated_at"] = updatedAt is List ? updatedAt.join(',') : updatedAt;
-    if("null" != status)
-      queryParams["status"] = status is List ? status.join(',') : status;
-    if("null" != errorMessage)
-      queryParams["error_message"] = errorMessage is List ? errorMessage.join(',') : errorMessage;
-    if("null" != lastSuccessfulUpdateTime)
-      queryParams["last_successful_update_time"] = lastSuccessfulUpdateTime is List ? lastSuccessfulUpdateTime.join(',') : lastSuccessfulUpdateTime;
-    if("null" != reversePearsonCorrelationCoefficient)
-      queryParams["reverse_pearson_correlation_coefficient"] = reversePearsonCorrelationCoefficient is List ? reversePearsonCorrelationCoefficient.join(',') : reversePearsonCorrelationCoefficient;
-    if("null" != predictivePearsonCorrelationCoefficient)
-      queryParams["predictive_pearson_correlation_coefficient"] = predictivePearsonCorrelationCoefficient is List ? predictivePearsonCorrelationCoefficient.join(',') : predictivePearsonCorrelationCoefficient;
     if("null" != limit)
       queryParams["limit"] = limit is List ? limit.join(',') : limit;
     if("null" != offset)
@@ -106,7 +92,7 @@ class AggregatedCorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse200);
+        return ApiClient.deserialize(response.body, InlineResponse2008);
       }
       else {
         return null;
@@ -114,15 +100,15 @@ class AggregatedCorrelationApi {
     });
   }
   
-  /// Store AggregatedCorrelation
+  /// Store UserVariableRelationship
   ///
-  /// Store AggregatedCorrelation
-  Future<InlineResponse2001> aggregatedCorrelationsPost(String accessToken, AggregatedCorrelation body) {
+  /// Store UserVariableRelationship
+  Future<InlineResponse20029> userVariableRelationshipsPost(String accessToken, UserVariableRelationship body) {
     Object postBody = body;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations".replaceAll("{format}","json");
+    String path = "/userVariableRelationships".replaceAll("{format}","json");
 
     // query params
     Map<String, String> queryParams = {};
@@ -154,7 +140,7 @@ class AggregatedCorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2001);
+        return ApiClient.deserialize(response.body, InlineResponse20029);
       }
       else {
         return null;
@@ -162,15 +148,15 @@ class AggregatedCorrelationApi {
     });
   }
   
-  /// Get AggregatedCorrelation
+  /// Get UserVariableRelationship
   ///
-  /// Get AggregatedCorrelation
-  Future<InlineResponse2001> aggregatedCorrelationsIdGet(int id, String accessToken) {
+  /// Get UserVariableRelationship
+  Future<InlineResponse20029> userVariableRelationshipsIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/userVariableRelationships/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
 
     // query params
     Map<String, String> queryParams = {};
@@ -202,7 +188,7 @@ class AggregatedCorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2001);
+        return ApiClient.deserialize(response.body, InlineResponse20029);
       }
       else {
         return null;
@@ -210,15 +196,15 @@ class AggregatedCorrelationApi {
     });
   }
   
-  /// Update AggregatedCorrelation
+  /// Update UserVariableRelationship
   ///
-  /// Update AggregatedCorrelation
-  Future<InlineResponse2002> aggregatedCorrelationsIdPut(int id, String accessToken, AggregatedCorrelation body) {
+  /// Update UserVariableRelationship
+  Future<InlineResponse2002> userVariableRelationshipsIdPut(int id, String accessToken, UserVariableRelationship body) {
     Object postBody = body;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/userVariableRelationships/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
 
     // query params
     Map<String, String> queryParams = {};
@@ -258,15 +244,15 @@ class AggregatedCorrelationApi {
     });
   }
   
-  /// Delete AggregatedCorrelation
+  /// Delete UserVariableRelationship
   ///
-  /// Delete AggregatedCorrelation
-  Future<InlineResponse2002> aggregatedCorrelationsIdDelete(int id, String accessToken) {
+  /// Delete UserVariableRelationship
+  Future<InlineResponse2002> userVariableRelationshipsIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
     // create path and map variables
-    String path = "/aggregatedCorrelations/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+    String path = "/userVariableRelationships/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
 
     // query params
     Map<String, String> queryParams = {};

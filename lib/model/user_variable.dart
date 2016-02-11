@@ -6,6 +6,9 @@ class UserVariable {
   /* ID of the parent variable if this variable has any parent */
   int parentId = null;
   
+  /* User ID */
+  int userId = null;
+  
   /* client_id */
   String clientId = null;
   
@@ -90,8 +93,8 @@ class UserVariable {
   /* Variance */
   num variance = null;
   
-  /* Minimum recorded daily value of this variable */
-  num minimumRecordedDailyValue = null;
+  /* Minimum recorded value of this variable */
+  num minimumRecordedValue = null;
   
   /* Maximum recorded daily value of this variable */
   num maximumRecordedDailyValue = null;
@@ -129,10 +132,16 @@ class UserVariable {
   /* Location */
   String location = null;
   
-  /* created_at */
+  /* Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format */
+  DateTime experimentStartTime = null;
+  
+  /* Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format */
+  DateTime experimentEndTime = null;
+  
+  /* When the record was first created. Use ISO 8601 datetime format */
   DateTime createdAt = null;
   
-  /* updated_at */
+  /* When the record in the database was last updated. Use ISO 8601 datetime format */
   DateTime updatedAt = null;
   
   /* Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables */
@@ -164,7 +173,7 @@ class UserVariable {
 
   @override
   String toString()  {
-    return 'UserVariable[parentId=$parentId, clientId=$clientId, variableId=$variableId, defaultUnitId=$defaultUnitId, minimumAllowedValue=$minimumAllowedValue, maximumAllowedValue=$maximumAllowedValue, fillingValue=$fillingValue, joinWith=$joinWith, onsetDelay=$onsetDelay, durationOfAction=$durationOfAction, variableCategoryId=$variableCategoryId, updated=$updated, public=$public, causeOnly=$causeOnly, fillingType=$fillingType, numberOfMeasurements=$numberOfMeasurements, numberOfProcessedMeasurements=$numberOfProcessedMeasurements, measurementsAtLastAnalysis=$measurementsAtLastAnalysis, lastUnitId=$lastUnitId, lastOriginalUnitId=$lastOriginalUnitId, lastValue=$lastValue, lastOriginalValue=$lastOriginalValue, lastSourceId=$lastSourceId, numberOfCorrelations=$numberOfCorrelations, status=$status, errorMessage=$errorMessage, lastSuccessfulUpdateTime=$lastSuccessfulUpdateTime, standardDeviation=$standardDeviation, variance=$variance, minimumRecordedDailyValue=$minimumRecordedDailyValue, maximumRecordedDailyValue=$maximumRecordedDailyValue, mean=$mean, median=$median, mostCommonUnitId=$mostCommonUnitId, mostCommonValue=$mostCommonValue, numberOfUniqueDailyValues=$numberOfUniqueDailyValues, numberOfChanges=$numberOfChanges, skewness=$skewness, kurtosis=$kurtosis, latitude=$latitude, longitude=$longitude, location=$location, createdAt=$createdAt, updatedAt=$updatedAt, outcome=$outcome, sources=$sources, earliestSourceTime=$earliestSourceTime, latestSourceTime=$latestSourceTime, earliestMeasurementTime=$earliestMeasurementTime, latestMeasurementTime=$latestMeasurementTime, earliestFillingTime=$earliestFillingTime, latestFillingTime=$latestFillingTime, ]';
+    return 'UserVariable[parentId=$parentId, userId=$userId, clientId=$clientId, variableId=$variableId, defaultUnitId=$defaultUnitId, minimumAllowedValue=$minimumAllowedValue, maximumAllowedValue=$maximumAllowedValue, fillingValue=$fillingValue, joinWith=$joinWith, onsetDelay=$onsetDelay, durationOfAction=$durationOfAction, variableCategoryId=$variableCategoryId, updated=$updated, public=$public, causeOnly=$causeOnly, fillingType=$fillingType, numberOfMeasurements=$numberOfMeasurements, numberOfProcessedMeasurements=$numberOfProcessedMeasurements, measurementsAtLastAnalysis=$measurementsAtLastAnalysis, lastUnitId=$lastUnitId, lastOriginalUnitId=$lastOriginalUnitId, lastValue=$lastValue, lastOriginalValue=$lastOriginalValue, lastSourceId=$lastSourceId, numberOfCorrelations=$numberOfCorrelations, status=$status, errorMessage=$errorMessage, lastSuccessfulUpdateTime=$lastSuccessfulUpdateTime, standardDeviation=$standardDeviation, variance=$variance, minimumRecordedValue=$minimumRecordedValue, maximumRecordedDailyValue=$maximumRecordedDailyValue, mean=$mean, median=$median, mostCommonUnitId=$mostCommonUnitId, mostCommonValue=$mostCommonValue, numberOfUniqueDailyValues=$numberOfUniqueDailyValues, numberOfChanges=$numberOfChanges, skewness=$skewness, kurtosis=$kurtosis, latitude=$latitude, longitude=$longitude, location=$location, experimentStartTime=$experimentStartTime, experimentEndTime=$experimentEndTime, createdAt=$createdAt, updatedAt=$updatedAt, outcome=$outcome, sources=$sources, earliestSourceTime=$earliestSourceTime, latestSourceTime=$latestSourceTime, earliestMeasurementTime=$earliestMeasurementTime, latestMeasurementTime=$latestMeasurementTime, earliestFillingTime=$earliestFillingTime, latestFillingTime=$latestFillingTime, ]';
   }
 
 }

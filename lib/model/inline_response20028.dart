@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20028 {
   
-  Variable data = null;
+  Update data = null;
   
   
   bool success = null;

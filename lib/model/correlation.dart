@@ -45,10 +45,10 @@ class Correlation {
   /* A function of the effect size and sample size */
   num statisticalSignificance = null;
   
-  /* Unit of Cause */
+  /* Unit of the predictor variable */
   String causeUnit = null;
   
-  /* Unit ID of Cause */
+  /* Unit ID of the predictor variable */
   int causeUnitId = null;
   
   /* Cause changes */
@@ -63,10 +63,10 @@ class Correlation {
   /* error */
   String error = null;
   
-  /* created_at */
+  /* When the record was first created. Use ISO 8601 datetime format */
   DateTime createdAt = null;
   
-  /* updated_at */
+  /* When the record in the database was last updated. Use ISO 8601 datetime format */
   DateTime updatedAt = null;
   
   /* Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation */

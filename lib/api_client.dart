@@ -77,6 +77,11 @@ class ApiClient {
       
       
       
+      case CommonVariableRelationship:
+        return isMap ? dson.map(json, new CommonVariableRelationship()) : dson.decode(json, new CommonVariableRelationship());
+      
+      
+      
       case Connection:
         return isMap ? dson.map(json, new Connection()) : dson.decode(json, new Connection());
       
@@ -112,6 +117,11 @@ class ApiClient {
       
       
       
+      case TrackingReminder:
+        return isMap ? dson.map(json, new TrackingReminder()) : dson.decode(json, new TrackingReminder());
+      
+      
+      
       case Unit:
         return isMap ? dson.map(json, new Unit()) : dson.decode(json, new Unit());
       
@@ -134,6 +144,11 @@ class ApiClient {
       
       case UserVariable:
         return isMap ? dson.map(json, new UserVariable()) : dson.decode(json, new UserVariable());
+      
+      
+      
+      case UserVariableRelationship:
+        return isMap ? dson.map(json, new UserVariableRelationship()) : dson.decode(json, new UserVariableRelationship());
       
       
       
@@ -309,6 +324,36 @@ class ApiClient {
       
       case InlineResponse20030:
         return isMap ? dson.map(json, new InlineResponse20030()) : dson.decode(json, new InlineResponse20030());
+      
+      
+      
+      case InlineResponse20031:
+        return isMap ? dson.map(json, new InlineResponse20031()) : dson.decode(json, new InlineResponse20031());
+      
+      
+      
+      case InlineResponse20032:
+        return isMap ? dson.map(json, new InlineResponse20032()) : dson.decode(json, new InlineResponse20032());
+      
+      
+      
+      case InlineResponse20033:
+        return isMap ? dson.map(json, new InlineResponse20033()) : dson.decode(json, new InlineResponse20033());
+      
+      
+      
+      case InlineResponse20034:
+        return isMap ? dson.map(json, new InlineResponse20034()) : dson.decode(json, new InlineResponse20034());
+      
+      
+      
+      case InlineResponse20035:
+        return isMap ? dson.map(json, new InlineResponse20035()) : dson.decode(json, new InlineResponse20035());
+      
+      
+      
+      case InlineResponse20036:
+        return isMap ? dson.map(json, new InlineResponse20036()) : dson.decode(json, new InlineResponse20036());
       
       
       default:

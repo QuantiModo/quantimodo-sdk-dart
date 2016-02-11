@@ -18,28 +18,28 @@ class Unit {
   /* Unit category ID */
   int categoryId = null;
   
-  /* Unit minimum value */
+  /* Minimum value permitted for this unit */
   num minimumValue = null;
   
-  /* Unit maximum value */
+  /* Maximum value permitted for this unit */
   num maximumValue = null;
   
   /* updated */
   int updated = null;
   
-  /* ID of default unit */
+  /* ID of default unit for this units category */
   int defaultUnitId = null;
   
-  /* Value multiplied to */
+  /* Value multiplied to convert to default unit in this unit category */
   num multiply = null;
   
   /* Value which should be added to convert to default unit */
   num add = null;
   
-  /* created_at */
+  /* When the record was first created. Use ISO 8601 datetime format */
   DateTime createdAt = null;
   
-  /* updated_at */
+  /* When the record in the database was last updated. Use ISO 8601 datetime format */
   DateTime updatedAt = null;
   
   

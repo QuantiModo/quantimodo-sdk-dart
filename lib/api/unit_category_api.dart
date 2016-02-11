@@ -12,10 +12,10 @@ class UnitCategoryApi {
   }
 
   
-  /// Get all UnitCategories
+  /// Get unit categories
   ///
-  /// Get all UnitCategories
-  Future<InlineResponse20015> unitCategoriesGet(String name, String createdAt, String updatedAt, int limit, int offset, String sort) {
+  /// Get a list of the categories of measurement units such as &#39;Distance&#39;, &#39;Duration&#39;, &#39;Energy&#39;, &#39;Frequency&#39;, &#39;Miscellany&#39;, &#39;Pressure&#39;, &#39;Proportion&#39;, &#39;Rating&#39;, &#39;Temperature&#39;, &#39;Volume&#39;, and &#39;Weight&#39;.
+  Future<InlineResponse20024> unitCategoriesGet(String accessToken, String name, String createdAt, String updatedAt, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class UnitCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != name)
       queryParams["name"] = name is List ? name.join(',') : name;
     if("null" != createdAt)
@@ -44,7 +46,7 @@ class UnitCategoryApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -62,7 +64,7 @@ class UnitCategoryApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20015);
+        return ApiClient.deserialize(response.body, InlineResponse20024);
       }
       else {
         return null;
@@ -73,7 +75,7 @@ class UnitCategoryApi {
   /// Store UnitCategory
   ///
   /// Store UnitCategory
-  Future<InlineResponse20016> unitCategoriesPost(UnitCategory body) {
+  Future<InlineResponse20025> unitCategoriesPost(String accessToken, UnitCategory body) {
     Object postBody = body;
     
 
@@ -84,13 +86,15 @@ class UnitCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -108,7 +112,7 @@ class UnitCategoryApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20016);
+        return ApiClient.deserialize(response.body, InlineResponse20025);
       }
       else {
         return null;
@@ -119,7 +123,7 @@ class UnitCategoryApi {
   /// Get UnitCategory
   ///
   /// Get UnitCategory
-  Future<InlineResponse20016> unitCategoriesIdGet(int id) {
+  Future<InlineResponse20025> unitCategoriesIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -130,13 +134,15 @@ class UnitCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -154,7 +160,7 @@ class UnitCategoryApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20016);
+        return ApiClient.deserialize(response.body, InlineResponse20025);
       }
       else {
         return null;
@@ -165,7 +171,7 @@ class UnitCategoryApi {
   /// Update UnitCategory
   ///
   /// Update UnitCategory
-  Future<InlineResponse2002> unitCategoriesIdPut(int id, UnitCategory body) {
+  Future<InlineResponse2002> unitCategoriesIdPut(int id, String accessToken, UnitCategory body) {
     Object postBody = body;
     
 
@@ -176,13 +182,15 @@ class UnitCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -211,7 +219,7 @@ class UnitCategoryApi {
   /// Delete UnitCategory
   ///
   /// Delete UnitCategory
-  Future<InlineResponse2002> unitCategoriesIdDelete(int id) {
+  Future<InlineResponse2002> unitCategoriesIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -222,13 +230,15 @@ class UnitCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

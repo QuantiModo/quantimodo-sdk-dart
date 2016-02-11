@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20019 {
   
-  List<Update> data = [];
+  Credential data = null;
   
   
   bool success = null;

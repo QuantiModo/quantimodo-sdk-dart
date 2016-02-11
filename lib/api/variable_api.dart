@@ -15,7 +15,7 @@ class VariableApi {
   /// Get all Variables
   ///
   /// Get all Variables
-  Future<InlineResponse20027> variablesGet(int id, String clientId, int parentId, String name, int variableCategoryId, int defaultUnitId, String combinationOperation, Number fillingValue, Number maximumAllowedValue, Number minimumAllowedValue, int onsetDelay, int durationOfAction, int public, bool causeOnly, Number mostCommonValue, int mostCommonUnitId, Number standardDeviation, Number variance, Number mean, Number median, Number numberOfMeasurements, Number numberOfUniqueValues, Number skewness, Number kurtosis, Number latitude, Number longitude, String location, String status, String errorMessage, String lastSuccessfulUpdateTime, String createdAt, String updatedAt, String productUrl, String imageUrl, Number price, int numberOfUserVariables, bool outcome, Number minimumRecordedValue, Number maximumRecordedValue, int limit, int offset, String sort) {
+  Future<InlineResponse20034> variablesGet(String accessToken, int id, String clientId, int parentId, String name, int variableCategoryId, int defaultUnitId, String combinationOperation, Number fillingValue, Number maximumAllowedValue, Number minimumAllowedValue, int onsetDelay, int durationOfAction, int public, bool causeOnly, Number mostCommonValue, int mostCommonUnitId, Number standardDeviation, Number variance, Number mean, Number median, Number numberOfMeasurements, Number numberOfUniqueValues, Number skewness, Number kurtosis, String status, String errorMessage, String lastSuccessfulUpdateTime, String createdAt, String updatedAt, String productUrl, String imageUrl, Number price, int numberOfUserVariables, bool outcome, Number minimumRecordedValue, Number maximumRecordedValue, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class VariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != id)
       queryParams["id"] = id is List ? id.join(',') : id;
     if("null" != clientId)
@@ -74,12 +76,6 @@ class VariableApi {
       queryParams["skewness"] = skewness is List ? skewness.join(',') : skewness;
     if("null" != kurtosis)
       queryParams["kurtosis"] = kurtosis is List ? kurtosis.join(',') : kurtosis;
-    if("null" != latitude)
-      queryParams["latitude"] = latitude is List ? latitude.join(',') : latitude;
-    if("null" != longitude)
-      queryParams["longitude"] = longitude is List ? longitude.join(',') : longitude;
-    if("null" != location)
-      queryParams["location"] = location is List ? location.join(',') : location;
     if("null" != status)
       queryParams["status"] = status is List ? status.join(',') : status;
     if("null" != errorMessage)
@@ -116,7 +112,7 @@ class VariableApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -134,7 +130,7 @@ class VariableApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20027);
+        return ApiClient.deserialize(response.body, InlineResponse20034);
       }
       else {
         return null;
@@ -144,8 +140,8 @@ class VariableApi {
   
   /// Store Variable
   ///
-  /// Store Variable
-  Future<InlineResponse20028> variablesPost(Variable body) {
+  /// Allows the client to create a new variable in the `variables` table.
+  Future<InlineResponse20035> variablesPost(String accessToken, Variable body) {
     Object postBody = body;
     
 
@@ -156,13 +152,15 @@ class VariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -180,7 +178,7 @@ class VariableApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20028);
+        return ApiClient.deserialize(response.body, InlineResponse20035);
       }
       else {
         return null;
@@ -191,7 +189,7 @@ class VariableApi {
   /// Get Variable
   ///
   /// Get Variable
-  Future<InlineResponse20028> variablesIdGet(int id) {
+  Future<InlineResponse20035> variablesIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -202,13 +200,15 @@ class VariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -226,7 +226,7 @@ class VariableApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20028);
+        return ApiClient.deserialize(response.body, InlineResponse20035);
       }
       else {
         return null;
@@ -237,7 +237,7 @@ class VariableApi {
   /// Update Variable
   ///
   /// Update Variable
-  Future<InlineResponse2002> variablesIdPut(int id, Variable body) {
+  Future<InlineResponse2002> variablesIdPut(int id, String accessToken, Variable body) {
     Object postBody = body;
     
 
@@ -248,13 +248,15 @@ class VariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -283,7 +285,7 @@ class VariableApi {
   /// Delete Variable
   ///
   /// Delete Variable
-  Future<InlineResponse2002> variablesIdDelete(int id) {
+  Future<InlineResponse2002> variablesIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -294,13 +296,15 @@ class VariableApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

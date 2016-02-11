@@ -15,7 +15,7 @@ class CorrelationApi {
   /// Get all Correlations
   ///
   /// Get all Correlations
-  Future<InlineResponse2007> correlationsGet(int timestamp, int userId, Number correlation, int causeId, int effectId, int onsetDelay, int durationOfAction, int numberOfPairs, Number valuePredictingHighOutcome, Number valuePredictingLowOutcome, Number optimalPearsonProduct, Number vote, Number statisticalSignificance, String causeUnit, int causeUnitId, int causeChanges, int effectChanges, Number qmScore, String error, String createdAt, String updatedAt, Number reversePearsonCorrelationCoefficient, Number predictivePearsonCorrelationCoefficient, int limit, int offset, String sort) {
+  Future<InlineResponse20017> correlationsGet(String accessToken, int timestamp, int userId, Number correlation, int causeId, int effectId, int onsetDelay, int durationOfAction, int numberOfPairs, Number valuePredictingHighOutcome, Number valuePredictingLowOutcome, Number optimalPearsonProduct, Number vote, Number statisticalSignificance, String causeUnit, int causeUnitId, int causeChanges, int effectChanges, Number qmScore, String error, String createdAt, String updatedAt, Number reversePearsonCorrelationCoefficient, Number predictivePearsonCorrelationCoefficient, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class CorrelationApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != timestamp)
       queryParams["timestamp"] = timestamp is List ? timestamp.join(',') : timestamp;
     if("null" != userId)
@@ -84,7 +86,7 @@ class CorrelationApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -102,7 +104,7 @@ class CorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2007);
+        return ApiClient.deserialize(response.body, InlineResponse20017);
       }
       else {
         return null;
@@ -113,7 +115,7 @@ class CorrelationApi {
   /// Store Correlation
   ///
   /// Store Correlation
-  Future<InlineResponse2008> correlationsPost(Correlation body) {
+  Future<InlineResponse20018> correlationsPost(String accessToken, Correlation body) {
     Object postBody = body;
     
 
@@ -124,13 +126,15 @@ class CorrelationApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -148,7 +152,7 @@ class CorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2008);
+        return ApiClient.deserialize(response.body, InlineResponse20018);
       }
       else {
         return null;
@@ -156,10 +160,10 @@ class CorrelationApi {
     });
   }
   
-  /// Get Correlation
+  /// Get Correlation Details
   ///
   /// Get Correlation
-  Future<InlineResponse2008> correlationsIdGet(int id) {
+  Future<InlineResponse20018> correlationsIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -170,13 +174,15 @@ class CorrelationApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -194,7 +200,7 @@ class CorrelationApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse2008);
+        return ApiClient.deserialize(response.body, InlineResponse20018);
       }
       else {
         return null;
@@ -205,7 +211,7 @@ class CorrelationApi {
   /// Update Correlation
   ///
   /// Update Correlation
-  Future<InlineResponse2002> correlationsIdPut(int id, Correlation body) {
+  Future<InlineResponse2002> correlationsIdPut(int id, String accessToken, Correlation body) {
     Object postBody = body;
     
 
@@ -216,13 +222,15 @@ class CorrelationApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -251,7 +259,7 @@ class CorrelationApi {
   /// Delete Correlation
   ///
   /// Delete Correlation
-  Future<InlineResponse2002> correlationsIdDelete(int id) {
+  Future<InlineResponse2002> correlationsIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -262,13 +270,15 @@ class CorrelationApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

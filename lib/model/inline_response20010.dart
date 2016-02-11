@@ -4,7 +4,7 @@ part of api;
 @Entity()
 class InlineResponse20010 {
   
-  Credential data = null;
+  List<VariableUserSource> data = [];
   
   
   bool success = null;

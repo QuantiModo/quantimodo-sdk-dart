@@ -14,8 +14,8 @@ class VariableCategoryApi {
   
   /// Get all VariableCategories
   ///
-  /// Get all VariableCategories
-  Future<InlineResponse20023> variableCategoriesGet(String name, Number fillingValue, Number maximumAllowedValue, Number minimumAllowedValue, int durationOfAction, int onsetDelay, String combinationOperation, int updated, bool causeOnly, int public, bool outcome, String createdAt, String updatedAt, String imageUrl, int defaultUnitId, int limit, int offset, String sort) {
+  /// The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work.
+  Future<InlineResponse20031> variableCategoriesGet(String accessToken, String name, Number fillingValue, Number maximumAllowedValue, Number minimumAllowedValue, int durationOfAction, int onsetDelay, String combinationOperation, int updated, bool causeOnly, int public, bool outcome, String createdAt, String updatedAt, String imageUrl, int defaultUnitId, int limit, int offset, String sort) {
     Object postBody = null;
     
 
@@ -26,6 +26,8 @@ class VariableCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     if("null" != name)
       queryParams["name"] = name is List ? name.join(',') : name;
     if("null" != fillingValue)
@@ -68,7 +70,7 @@ class VariableCategoryApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -86,7 +88,7 @@ class VariableCategoryApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20023);
+        return ApiClient.deserialize(response.body, InlineResponse20031);
       }
       else {
         return null;
@@ -97,7 +99,7 @@ class VariableCategoryApi {
   /// Store VariableCategory
   ///
   /// Store VariableCategory
-  Future<InlineResponse20024> variableCategoriesPost(VariableCategory body) {
+  Future<InlineResponse20032> variableCategoriesPost(String accessToken, VariableCategory body) {
     Object postBody = body;
     
 
@@ -108,13 +110,15 @@ class VariableCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -132,7 +136,7 @@ class VariableCategoryApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20024);
+        return ApiClient.deserialize(response.body, InlineResponse20032);
       }
       else {
         return null;
@@ -143,7 +147,7 @@ class VariableCategoryApi {
   /// Get VariableCategory
   ///
   /// Get VariableCategory
-  Future<InlineResponse20024> variableCategoriesIdGet(int id) {
+  Future<InlineResponse20032> variableCategoriesIdGet(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -154,13 +158,15 @@ class VariableCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -178,7 +184,7 @@ class VariableCategoryApi {
         throw new ApiException(response.statusCode, response.body);
       }
       else if(response.body != null){
-        return ApiClient.deserialize(response.body, InlineResponse20024);
+        return ApiClient.deserialize(response.body, InlineResponse20032);
       }
       else {
         return null;
@@ -189,7 +195,7 @@ class VariableCategoryApi {
   /// Update VariableCategory
   ///
   /// Update VariableCategory
-  Future<InlineResponse2002> variableCategoriesIdPut(int id, VariableCategory body) {
+  Future<InlineResponse2002> variableCategoriesIdPut(int id, String accessToken, VariableCategory body) {
     Object postBody = body;
     
 
@@ -200,13 +206,15 @@ class VariableCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -235,7 +243,7 @@ class VariableCategoryApi {
   /// Delete VariableCategory
   ///
   /// Delete VariableCategory
-  Future<InlineResponse2002> variableCategoriesIdDelete(int id) {
+  Future<InlineResponse2002> variableCategoriesIdDelete(int id, String accessToken) {
     Object postBody = null;
     
 
@@ -246,13 +254,15 @@ class VariableCategoryApi {
     Map<String, String> queryParams = {};
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if("null" != accessToken)
+      queryParams["access_token"] = accessToken is List ? accessToken.join(',') : accessToken;
     
     
 
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["quantimodo_oauth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

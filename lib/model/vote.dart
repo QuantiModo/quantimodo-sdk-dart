@@ -12,7 +12,7 @@ class Vote {
   /* ID of User */
   int userId = null;
   
-  /* ID of cause variable */
+  /* ID of the predictor variable */
   int causeId = null;
   
   /* ID of effect variable */
@@ -21,10 +21,10 @@ class Vote {
   /* Value of Vote */
   int value = null;
   
-  /* created_at */
+  /* When the record was first created. Use ISO 8601 datetime format */
   DateTime createdAt = null;
   
-  /* updated_at */
+  /* When the record in the database was last updated. Use ISO 8601 datetime format */
   DateTime updatedAt = null;
   
   
