@@ -4,38 +4,50 @@ part of api;
 @Entity()
 class Connector {
   /* Connector ID number */
+  @Property(name: 'id')
   int id = null;
   
-  /* Connector lowercase system name */
+/* Connector lowercase system name */
+  @Property(name: 'name')
   String name = null;
   
-  /* Connector pretty display name */
+/* Connector pretty display name */
+  @Property(name: 'displayName')
   String displayName = null;
   
-  /* URL to the image of the connector logo */
+/* URL to the image of the connector logo */
+  @Property(name: 'image')
   String image = null;
   
-  /* URL to a site where one can get this device or application */
+/* URL to a site where one can get this device or application */
+  @Property(name: 'getItUrl')
   String getItUrl = null;
   
-  /* Short description */
-  String shortDescription = null;
+/* True if the authenticated user has this connector enabled */
+  @Property(name: 'connected')
+  String connected = null;
   
-  /* Long description */
-  String longDescription = null;
+/* URL and parameters used when connecting to a service */
+  @Property(name: 'connectInstructions')
+  String connectInstructions = null;
   
-  /* enabled */
-  bool enabled = null;
+/* Epoch timestamp of last sync */
+  @Property(name: 'lastUpdate')
+  int lastUpdate = null;
   
-  /* oauth */
-  bool oauth = null;
+/* Number of measurements obtained during latest update */
+  @Property(name: 'totalMeasurementsInLastUpdate')
+  int totalMeasurementsInLastUpdate = null;
   
+/* True if user has no measurements for this connector */
+  @Property(name: 'noDataYet')
+  bool noDataYet = null;
   
   Connector();
 
   @override
   String toString()  {
-    return 'Connector[id=$id, name=$name, displayName=$displayName, image=$image, getItUrl=$getItUrl, shortDescription=$shortDescription, longDescription=$longDescription, enabled=$enabled, oauth=$oauth, ]';
+    return 'Connector[id=$id, name=$name, displayName=$displayName, image=$image, getItUrl=$getItUrl, connected=$connected, connectInstructions=$connectInstructions, lastUpdate=$lastUpdate, totalMeasurementsInLastUpdate=$totalMeasurementsInLastUpdate, noDataYet=$noDataYet, ]';
   }
 
 }

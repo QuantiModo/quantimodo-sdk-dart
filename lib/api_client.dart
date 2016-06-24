@@ -10,7 +10,10 @@ class ApiClient {
 
   ApiClient() {
     // Setup authentications (key: authentication name, value: authentication).
+    _authentications['oauth2'] = new OAuth();
     _authentications['quantimodo_oauth2'] = new OAuth();
+    _authentications['basicAuth'] = new HttpBasicAuth();
+    _authentications['internalApiKey'] = new ApiKeyAuth("header", "api_key");
   }
 
   void addDefaultHeader(String key, String value) {
@@ -60,257 +63,126 @@ class ApiClient {
     bool isMap = json is Map;
 
     switch(clazz) {
-      
-      
-      case MeasurementValue:
-        return isMap ? dson.map(json, new MeasurementValue()) : dson.decode(json, new MeasurementValue());
-      
-      
-      
-      case MeasurementPost:
-        return isMap ? dson.map(json, new MeasurementPost()) : dson.decode(json, new MeasurementPost());
-      
-      
-      
-      case AggregatedCorrelation:
-        return isMap ? dson.map(json, new AggregatedCorrelation()) : dson.decode(json, new AggregatedCorrelation());
-      
-      
-      
+      case CommonResponse:
+        return isMap ? dson.map(json, new CommonResponse()) : dson.decode(json, new CommonResponse());
       case Connection:
         return isMap ? dson.map(json, new Connection()) : dson.decode(json, new Connection());
-      
-      
-      
       case Connector:
         return isMap ? dson.map(json, new Connector()) : dson.decode(json, new Connector());
-      
-      
-      
+      case ConnectorInfo:
+        return isMap ? dson.map(json, new ConnectorInfo()) : dson.decode(json, new ConnectorInfo());
+      case ConnectorInfoHistoryItem:
+        return isMap ? dson.map(json, new ConnectorInfoHistoryItem()) : dson.decode(json, new ConnectorInfoHistoryItem());
+      case ConnectorInstruction:
+        return isMap ? dson.map(json, new ConnectorInstruction()) : dson.decode(json, new ConnectorInstruction());
+      case ConversionStep:
+        return isMap ? dson.map(json, new ConversionStep()) : dson.decode(json, new ConversionStep());
       case Correlation:
         return isMap ? dson.map(json, new Correlation()) : dson.decode(json, new Correlation());
-      
-      
-      
       case Credential:
         return isMap ? dson.map(json, new Credential()) : dson.decode(json, new Credential());
-      
-      
-      
-      case Measurement:
-        return isMap ? dson.map(json, new Measurement()) : dson.decode(json, new Measurement());
-      
-      
-      
-      case MeasurementExport:
-        return isMap ? dson.map(json, new MeasurementExport()) : dson.decode(json, new MeasurementExport());
-      
-      
-      
-      case Source:
-        return isMap ? dson.map(json, new Source()) : dson.decode(json, new Source());
-      
-      
-      
-      case Unit:
-        return isMap ? dson.map(json, new Unit()) : dson.decode(json, new Unit());
-      
-      
-      
-      case UnitCategory:
-        return isMap ? dson.map(json, new UnitCategory()) : dson.decode(json, new UnitCategory());
-      
-      
-      
-      case UnitConversion:
-        return isMap ? dson.map(json, new UnitConversion()) : dson.decode(json, new UnitConversion());
-      
-      
-      
-      case Update:
-        return isMap ? dson.map(json, new Update()) : dson.decode(json, new Update());
-      
-      
-      
-      case UserVariable:
-        return isMap ? dson.map(json, new UserVariable()) : dson.decode(json, new UserVariable());
-      
-      
-      
-      case Variable:
-        return isMap ? dson.map(json, new Variable()) : dson.decode(json, new Variable());
-      
-      
-      
-      case VariableCategory:
-        return isMap ? dson.map(json, new VariableCategory()) : dson.decode(json, new VariableCategory());
-      
-      
-      
-      case VariableUserSource:
-        return isMap ? dson.map(json, new VariableUserSource()) : dson.decode(json, new VariableUserSource());
-      
-      
-      
-      case Vote:
-        return isMap ? dson.map(json, new Vote()) : dson.decode(json, new Vote());
-      
-      
-      
+      case HumanTime:
+        return isMap ? dson.map(json, new HumanTime()) : dson.decode(json, new HumanTime());
       case InlineResponse200:
         return isMap ? dson.map(json, new InlineResponse200()) : dson.decode(json, new InlineResponse200());
-      
-      
-      
       case InlineResponse2001:
         return isMap ? dson.map(json, new InlineResponse2001()) : dson.decode(json, new InlineResponse2001());
-      
-      
-      
-      case InlineResponse2002:
-        return isMap ? dson.map(json, new InlineResponse2002()) : dson.decode(json, new InlineResponse2002());
-      
-      
-      
-      case InlineResponse2003:
-        return isMap ? dson.map(json, new InlineResponse2003()) : dson.decode(json, new InlineResponse2003());
-      
-      
-      
-      case InlineResponse2004:
-        return isMap ? dson.map(json, new InlineResponse2004()) : dson.decode(json, new InlineResponse2004());
-      
-      
-      
-      case InlineResponse2005:
-        return isMap ? dson.map(json, new InlineResponse2005()) : dson.decode(json, new InlineResponse2005());
-      
-      
-      
-      case InlineResponse2006:
-        return isMap ? dson.map(json, new InlineResponse2006()) : dson.decode(json, new InlineResponse2006());
-      
-      
-      
-      case InlineResponse2007:
-        return isMap ? dson.map(json, new InlineResponse2007()) : dson.decode(json, new InlineResponse2007());
-      
-      
-      
-      case InlineResponse2008:
-        return isMap ? dson.map(json, new InlineResponse2008()) : dson.decode(json, new InlineResponse2008());
-      
-      
-      
-      case InlineResponse2009:
-        return isMap ? dson.map(json, new InlineResponse2009()) : dson.decode(json, new InlineResponse2009());
-      
-      
-      
       case InlineResponse20010:
         return isMap ? dson.map(json, new InlineResponse20010()) : dson.decode(json, new InlineResponse20010());
-      
-      
-      
       case InlineResponse20011:
         return isMap ? dson.map(json, new InlineResponse20011()) : dson.decode(json, new InlineResponse20011());
-      
-      
-      
       case InlineResponse20012:
         return isMap ? dson.map(json, new InlineResponse20012()) : dson.decode(json, new InlineResponse20012());
-      
-      
-      
-      case InlineResponse20013:
-        return isMap ? dson.map(json, new InlineResponse20013()) : dson.decode(json, new InlineResponse20013());
-      
-      
-      
-      case InlineResponse20014:
-        return isMap ? dson.map(json, new InlineResponse20014()) : dson.decode(json, new InlineResponse20014());
-      
-      
-      
-      case InlineResponse20015:
-        return isMap ? dson.map(json, new InlineResponse20015()) : dson.decode(json, new InlineResponse20015());
-      
-      
-      
-      case InlineResponse20016:
-        return isMap ? dson.map(json, new InlineResponse20016()) : dson.decode(json, new InlineResponse20016());
-      
-      
-      
-      case InlineResponse20017:
-        return isMap ? dson.map(json, new InlineResponse20017()) : dson.decode(json, new InlineResponse20017());
-      
-      
-      
-      case InlineResponse20018:
-        return isMap ? dson.map(json, new InlineResponse20018()) : dson.decode(json, new InlineResponse20018());
-      
-      
-      
-      case InlineResponse20019:
-        return isMap ? dson.map(json, new InlineResponse20019()) : dson.decode(json, new InlineResponse20019());
-      
-      
-      
-      case InlineResponse20020:
-        return isMap ? dson.map(json, new InlineResponse20020()) : dson.decode(json, new InlineResponse20020());
-      
-      
-      
-      case InlineResponse20021:
-        return isMap ? dson.map(json, new InlineResponse20021()) : dson.decode(json, new InlineResponse20021());
-      
-      
-      
-      case InlineResponse20022:
-        return isMap ? dson.map(json, new InlineResponse20022()) : dson.decode(json, new InlineResponse20022());
-      
-      
-      
-      case InlineResponse20023:
-        return isMap ? dson.map(json, new InlineResponse20023()) : dson.decode(json, new InlineResponse20023());
-      
-      
-      
-      case InlineResponse20024:
-        return isMap ? dson.map(json, new InlineResponse20024()) : dson.decode(json, new InlineResponse20024());
-      
-      
-      
-      case InlineResponse20025:
-        return isMap ? dson.map(json, new InlineResponse20025()) : dson.decode(json, new InlineResponse20025());
-      
-      
-      
-      case InlineResponse20026:
-        return isMap ? dson.map(json, new InlineResponse20026()) : dson.decode(json, new InlineResponse20026());
-      
-      
-      
-      case InlineResponse20027:
-        return isMap ? dson.map(json, new InlineResponse20027()) : dson.decode(json, new InlineResponse20027());
-      
-      
-      
-      case InlineResponse20028:
-        return isMap ? dson.map(json, new InlineResponse20028()) : dson.decode(json, new InlineResponse20028());
-      
-      
-      
-      case InlineResponse20029:
-        return isMap ? dson.map(json, new InlineResponse20029()) : dson.decode(json, new InlineResponse20029());
-      
-      
-      
-      case InlineResponse20030:
-        return isMap ? dson.map(json, new InlineResponse20030()) : dson.decode(json, new InlineResponse20030());
-      
-      
+      case InlineResponse2002:
+        return isMap ? dson.map(json, new InlineResponse2002()) : dson.decode(json, new InlineResponse2002());
+      case InlineResponse2003:
+        return isMap ? dson.map(json, new InlineResponse2003()) : dson.decode(json, new InlineResponse2003());
+      case InlineResponse2004:
+        return isMap ? dson.map(json, new InlineResponse2004()) : dson.decode(json, new InlineResponse2004());
+      case InlineResponse2005:
+        return isMap ? dson.map(json, new InlineResponse2005()) : dson.decode(json, new InlineResponse2005());
+      case InlineResponse2006:
+        return isMap ? dson.map(json, new InlineResponse2006()) : dson.decode(json, new InlineResponse2006());
+      case InlineResponse2007:
+        return isMap ? dson.map(json, new InlineResponse2007()) : dson.decode(json, new InlineResponse2007());
+      case InlineResponse2008:
+        return isMap ? dson.map(json, new InlineResponse2008()) : dson.decode(json, new InlineResponse2008());
+      case InlineResponse2009:
+        return isMap ? dson.map(json, new InlineResponse2009()) : dson.decode(json, new InlineResponse2009());
+      case JsonErrorResponse:
+        return isMap ? dson.map(json, new JsonErrorResponse()) : dson.decode(json, new JsonErrorResponse());
+      case Measurement:
+        return isMap ? dson.map(json, new Measurement()) : dson.decode(json, new Measurement());
+      case MeasurementDelete:
+        return isMap ? dson.map(json, new MeasurementDelete()) : dson.decode(json, new MeasurementDelete());
+      case MeasurementRange:
+        return isMap ? dson.map(json, new MeasurementRange()) : dson.decode(json, new MeasurementRange());
+      case MeasurementSet:
+        return isMap ? dson.map(json, new MeasurementSet()) : dson.decode(json, new MeasurementSet());
+      case MeasurementSource:
+        return isMap ? dson.map(json, new MeasurementSource()) : dson.decode(json, new MeasurementSource());
+      case Pairs:
+        return isMap ? dson.map(json, new Pairs()) : dson.decode(json, new Pairs());
+      case Permission:
+        return isMap ? dson.map(json, new Permission()) : dson.decode(json, new Permission());
+      case PostCorrelation:
+        return isMap ? dson.map(json, new PostCorrelation()) : dson.decode(json, new PostCorrelation());
+      case PostVote:
+        return isMap ? dson.map(json, new PostVote()) : dson.decode(json, new PostVote());
+      case TrackingReminder:
+        return isMap ? dson.map(json, new TrackingReminder()) : dson.decode(json, new TrackingReminder());
+      case TrackingReminderDelete:
+        return isMap ? dson.map(json, new TrackingReminderDelete()) : dson.decode(json, new TrackingReminderDelete());
+      case TrackingReminderNotification:
+        return isMap ? dson.map(json, new TrackingReminderNotification()) : dson.decode(json, new TrackingReminderNotification());
+      case TrackingReminderNotificationSkip:
+        return isMap ? dson.map(json, new TrackingReminderNotificationSkip()) : dson.decode(json, new TrackingReminderNotificationSkip());
+      case TrackingReminderNotificationSnooze:
+        return isMap ? dson.map(json, new TrackingReminderNotificationSnooze()) : dson.decode(json, new TrackingReminderNotificationSnooze());
+      case TrackingReminderNotificationTrack:
+        return isMap ? dson.map(json, new TrackingReminderNotificationTrack()) : dson.decode(json, new TrackingReminderNotificationTrack());
+      case Unit:
+        return isMap ? dson.map(json, new Unit()) : dson.decode(json, new Unit());
+      case UnitCategory:
+        return isMap ? dson.map(json, new UnitCategory()) : dson.decode(json, new UnitCategory());
+      case Update:
+        return isMap ? dson.map(json, new Update()) : dson.decode(json, new Update());
+      case User:
+        return isMap ? dson.map(json, new User()) : dson.decode(json, new User());
+      case UserTag:
+        return isMap ? dson.map(json, new UserTag()) : dson.decode(json, new UserTag());
+      case UserTokenFailedResponse:
+        return isMap ? dson.map(json, new UserTokenFailedResponse()) : dson.decode(json, new UserTokenFailedResponse());
+      case UserTokenRequest:
+        return isMap ? dson.map(json, new UserTokenRequest()) : dson.decode(json, new UserTokenRequest());
+      case UserTokenRequestInnerUserField:
+        return isMap ? dson.map(json, new UserTokenRequestInnerUserField()) : dson.decode(json, new UserTokenRequestInnerUserField());
+      case UserTokenSuccessfulResponse:
+        return isMap ? dson.map(json, new UserTokenSuccessfulResponse()) : dson.decode(json, new UserTokenSuccessfulResponse());
+      case UserTokenSuccessfulResponseInnerUserField:
+        return isMap ? dson.map(json, new UserTokenSuccessfulResponseInnerUserField()) : dson.decode(json, new UserTokenSuccessfulResponseInnerUserField());
+      case UserVariable:
+        return isMap ? dson.map(json, new UserVariable()) : dson.decode(json, new UserVariable());
+      case UserVariableRelationship:
+        return isMap ? dson.map(json, new UserVariableRelationship()) : dson.decode(json, new UserVariableRelationship());
+      case UserVariables:
+        return isMap ? dson.map(json, new UserVariables()) : dson.decode(json, new UserVariables());
+      case ValueObject:
+        return isMap ? dson.map(json, new ValueObject()) : dson.decode(json, new ValueObject());
+      case Variable:
+        return isMap ? dson.map(json, new Variable()) : dson.decode(json, new Variable());
+      case VariableCategory:
+        return isMap ? dson.map(json, new VariableCategory()) : dson.decode(json, new VariableCategory());
+      case VariableNew:
+        return isMap ? dson.map(json, new VariableNew()) : dson.decode(json, new VariableNew());
+      case VariableUserSource:
+        return isMap ? dson.map(json, new VariableUserSource()) : dson.decode(json, new VariableUserSource());
+      case VariablesNew:
+        return isMap ? dson.map(json, new VariablesNew()) : dson.decode(json, new VariablesNew());
+      case Vote:
+        return isMap ? dson.map(json, new Vote()) : dson.decode(json, new Vote());
+      case VoteDelete:
+        return isMap ? dson.map(json, new VoteDelete()) : dson.decode(json, new VoteDelete());
       default:
         throw new ApiException(500, 'Could not find a suitable class for deserialization');
     }

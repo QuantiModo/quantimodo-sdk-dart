@@ -4,11 +4,12 @@ part of api;
 @Entity()
 class InlineResponse2004 {
   
-  Connection data = null;
+  @Property(name: 'data')
+  List<Credential> data = [];
   
-  
+
+  @Property(name: 'success')
   bool success = null;
-  
   
   InlineResponse2004();
 
