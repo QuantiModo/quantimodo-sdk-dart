@@ -4,17 +4,18 @@ part of api;
 @Entity()
 class InlineResponse2008 {
   
-  Correlation data = null;
-  
-  
+  @Property(name: 'success')
   bool success = null;
   
+
+  @Property(name: 'data')
+  List<UserVariable> data = [];
   
   InlineResponse2008();
 
   @override
   String toString()  {
-    return 'InlineResponse2008[data=$data, success=$success, ]';
+    return 'InlineResponse2008[success=$success, data=$data, ]';
   }
 
 }

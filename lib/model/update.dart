@@ -4,29 +4,36 @@ part of api;
 @Entity()
 class Update {
   /* id */
+  @Property(name: 'id')
   int id = null;
   
-  /* user_id */
+/* user_id */
+  @Property(name: 'user_id')
   int userId = null;
   
-  /* connector_id */
+/* connector_id */
+  @Property(name: 'connector_id')
   int connectorId = null;
   
-  /* number_of_measurements */
+/* number_of_measurements */
+  @Property(name: 'number_of_measurements')
   int numberOfMeasurements = null;
   
-  /* success */
+/* success */
+  @Property(name: 'success')
   bool success = null;
   
-  /* message */
+/* message */
+  @Property(name: 'message')
   String message = null;
   
-  /* created_at */
+/* When the record was first created. Use ISO 8601 datetime format */
+  @Property(name: 'created_at')
   DateTime createdAt = null;
   
-  /* updated_at */
+/* When the record in the database was last updated. Use ISO 8601 datetime format */
+  @Property(name: 'updated_at')
   DateTime updatedAt = null;
-  
   
   Update();
 

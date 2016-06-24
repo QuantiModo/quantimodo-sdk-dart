@@ -4,17 +4,18 @@ part of api;
 @Entity()
 class InlineResponse2003 {
   
-  List<Connection> data = [];
-  
-  
+  @Property(name: 'success')
   bool success = null;
   
+
+  @Property(name: 'data')
+  List<Connection> data = [];
   
   InlineResponse2003();
 
   @override
   String toString()  {
-    return 'InlineResponse2003[data=$data, success=$success, ]';
+    return 'InlineResponse2003[success=$success, data=$data, ]';
   }
 
 }

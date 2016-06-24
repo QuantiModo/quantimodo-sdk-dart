@@ -4,17 +4,18 @@ part of api;
 @Entity()
 class InlineResponse2001 {
   
-  AggregatedCorrelation data = null;
-  
-  
+  @Property(name: 'success')
   bool success = null;
   
+
+  @Property(name: 'data')
+  List<TrackingReminder> data = [];
   
   InlineResponse2001();
 
   @override
   String toString()  {
-    return 'InlineResponse2001[data=$data, success=$success, ]';
+    return 'InlineResponse2001[success=$success, data=$data, ]';
   }
 
 }
